@@ -8,11 +8,11 @@ Vue.createApp({
         }
     },
     methods: {
-        async måling() {
+        måling() {
             const url = baseUrl
             try {
-                const response = await axios.get(url)
-                this.målingMessage = await "din måling er " +  response.data
+                const response = axios.get(url)
+                this.målingMessage = "din måling er " +  response.data
             } catch (ex) {
                 alert(ex.message)
             }
