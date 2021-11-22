@@ -12,7 +12,7 @@
 <body>
 <div id="app">
     <h1>BreathInDrink</h1>
-    <button v-on:click="måling()">Måling</button>
+    <button id="GetMålingButton" v-on:click="måling()">Måling</button>
     <div v-if="målingMessage" > {{ målingMessage }} </div>
     <div v-else>ingen målinger</div>
     
