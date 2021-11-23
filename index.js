@@ -1,15 +1,15 @@
-const baseUrl = ""
+const baseUrl = "http://localhost:33118/api"
 
 Vue.createApp({
     data() {
         return {
-            måling: 0,
+            nyMåling: 0,
             målingMessage: ""
         }
     },
     methods: {
-        måling() {
-            const url = baseUrl
+        getMåling() {
+            const url = baseUrl + "/Promille"
             try {
                 const response = axios.get(url)
                 this.målingMessage = "din måling er " +  response.data
