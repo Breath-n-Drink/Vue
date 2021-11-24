@@ -30,5 +30,12 @@ Vue.createApp({
         alert(ex.message)
       }
     },
+    calculatePct(pct) {
+      if (pct == -1.0) {
+        return "NA"
+      } else {
+        return Math.round(pct * 100) + " %"
+      }
+    }
   },
 }).mount("#app");

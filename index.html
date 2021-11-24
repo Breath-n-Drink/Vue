@@ -34,7 +34,7 @@
                 <tr scope="row" v-for="drink in drinks">
                     <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
                     <td>{{drink.name}}</td>
-                    <td>{{Math.round(drink.alcoholPercentage * 100)}} %</td>
+                    <td>{{calculatePct(drink.alcoholPercentage)}}</td>
                     <td>
                         <p v-for="ingredient in drink.ingredientList">
                             {{ingredient}}
