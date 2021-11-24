@@ -3,10 +3,13 @@ const baseUrl = "http://localhost:33118/api";
 Vue.createApp({
   data() {
     return {
-      drinks: [1],
+      drinks: [],
       nyMåling: 0,
       målingMessage: "",
     };
+  },
+  created() {
+    this.getDrinks()
   },
   methods: {
     async getMåling() {
@@ -16,6 +19,15 @@ Vue.createApp({
         this.nyMåling = await response.data;
       } catch (ex) {
         alert(ex.message);
+      }
+    },
+    async getDrinks() {
+      const url = baseUrl + "/drinks"
+      try {
+        const response = await axios.get(url);
+        this.drinks = await response.data;
+      } catch (ex) {
+        alert(ex.message)
       }
     },
   },
