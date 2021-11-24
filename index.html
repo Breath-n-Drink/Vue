@@ -9,35 +9,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="Stylesheet" type="text/css" href="/index.css">
-    <title>BreathInDrink</title>
+    <title>BreathNDrink</title>
 </head>
 
 <body>
     <div id="app">
-        <h1>BreathInDrink</h1>
+        <h1>Breath 'n' Drink</h1>
         <button id="GetMålingButton" v-on:click="getMåling()" class="btn btn-primary">Måling</button>
         <div v-if="nyMåling"> {{ nyMåling }} </div>
         <div v-else>ingen målinger</div>
 
         <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille</p>
 
-        <table class="table table-bordered">
-            <thead v-if="drinks.length">
+        <table v-if="drinks.length" class="table table-bordered">
+            <thead>
                 <tr>
-                    <th>Billede</th>
-                    <th>Name</th>
-                    <th>Alkohol indhold</th>
-                    <th>Ingredients</th>
-                </tr>
-                <tr v-for="drink in drinks">
-                    <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
-                    <td>{{drink.name}}</td>
-                    <td>{{drink.alcoholPercentage}}</td>
-                    <td>{{drink.ingredientList}}</td>
+                    <th scope="col">Billede</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Alkohol indhold</th>
+                    <th scope="col">Ingredients</th>
                 </tr>
             </thead>
-            <div v-else>No drinks</div>
+            <tbody>
+                <tr scope="row" v-for="drink in drinks">
+                    <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
+                    <td>{{drink.name}}</td>
+                    <td>{{Math.round(drink.alcoholPercentage * 100)}} %</td>
+                    <td>
+                        <p v-for="ingredient in drink.ingredientList">
+                            {{ingredient}}
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
         </table>
+        <div v-else>No drinks</div>
 
     </div>
     <script src="index.js"></script>
