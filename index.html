@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="Stylesheet" type="text/css" href="/index.css">
     <title>BreathInDrink</title>
@@ -13,13 +14,37 @@
 <body>
 <div id="app">
     <h1>BreathInDrink</h1>
-    <button id="GetMålingButton" v-on:click="getMåling()">Måling</button>
+    <button id="GetMålingButton" v-on:click="getMåling()" class="btn btn-primary">Måling</button>
     <div v-if="nyMåling"> {{ nyMåling }} </div>
     <div v-else>ingen målinger</div>
     
     <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille</p>
 
-    <button >Gå til alkohol</button>
+    <ul id="drinkList" v-if="drinks.length">
+        <li v-for="drink in drinks">
+            <p>"HEJ"</p>
+        </li>
+    </ul>
+    <div v-else>No drinks</div>
+
+    <table class="table table-bordered">
+        <thead v-if="drinks.length">
+            <tr>
+              <th>Billede</th>
+              <th>Name</th>
+              <th>promille</th>
+              <th>?</th>
+            </tr>
+            <tr v-for="drink in drinks">
+                <th><img src="https://www.mangioquindisono.it/wp-content/uploads/2018/06/mojito-sake%CC%802.jpg" alt="Mojito" width="70" height="100"></th>
+                <th>Mojito</th>
+                <th>0.2</th>
+                <th></th>
+              </tr>
+          </thead>
+          <div v-else>No drinks</div>
+    </table>
+
 </div>
 <script src="index.js"></script>
 </body>

@@ -3,6 +3,7 @@ const baseUrl = "http://localhost:33118/api";
 Vue.createApp({
   data() {
     return {
+      drinks: [1],
       nyMåling: 0,
       målingMessage: "",
     };
