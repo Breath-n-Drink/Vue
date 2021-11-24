@@ -32,13 +32,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr scope="row" v-for="drink in drinks">
+                <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks" v-on:click="adjustModal(drink)">
                     <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
                     <td>{{drink.name}}</td>
                     <td>{{Math.round(drink.alcoholPercentage * 100)}} %</td>
                     <td>
                         <p v-for="ingredient in drink.ingredientList">
                             {{ingredient}}
+                            
                         </p>
                     </td>
                 </tr>
@@ -51,20 +52,24 @@
     Open modal
   </button>
   
+
+  
   <!-- The Modal -->
-  <div class="modal" id="myModal">
+  <div class="modal" id="myModal" >
     <div class="modal-dialog">
       <div class="modal-content">
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
+          <h4 class="modal-title">{{ modalDrink.name}}</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
   
         <!-- Modal body -->
         <div class="modal-body">
-          Modal body..
+            <img v-bind:src="modalDrink.imgThumbUrl" alt="ThumbImg" width="70" height="100"><br>
+            {{Math.round(modalDrink.alcoholPercentage * 100)}}% <br>
+          {{modalDrink.instructions}}
         </div>
   
         <!-- Modal footer -->

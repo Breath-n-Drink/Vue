@@ -6,6 +6,9 @@ Vue.createApp({
       drinks: [],
       nyMåling: 0,
       målingMessage: "",
+      modalDrink: {
+        name: "test",
+      },
     };
   },
   created() {
@@ -30,5 +33,10 @@ Vue.createApp({
         alert(ex.message)
       }
     },
+    adjustModal(drink) {
+
+      this.modalDrink = drink
+      
+    }
   },
 }).mount("#app");
