@@ -9,6 +9,7 @@ Vue.createApp({
       modalDrink: {
         name: "test",
       },
+      bodyWeight: 75,
     };
   },
   created() {
@@ -35,9 +36,31 @@ Vue.createApp({
       }
     },
     adjustModal(drink) {
-
       this.modalDrink = drink
+    },  
+    async getDrinksByPromille() {
+      const url = baseUrl + "/drinks?bodyWeight=" + this.bodyWeight + "&bloodAlcCon=" + this.nyMåling
+      try {
+        const response = await axios.get(url);
+        this.drinks= await response.data;
+      } catch (ex) {
+        alert(ex.message)
+      }
       
+    },
+    calculatePct(pct) {
+      if (pct == -1.0) {
+        return "NA"
+      } else {
+        return Math.round(pct * 100) + " %"
+      }
+    },
+    calculateVol(vol) {
+      if (vol == -1.0) {
+        return "NA"
+      } else {
+        return Math.round(vol) + " mL"
+      }
     }
   },
 }).mount("#app");
