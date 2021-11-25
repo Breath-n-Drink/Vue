@@ -3,3 +3,8 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.drink:hover {
+    background-color:bisque;
+    transition:all 200ms ease-in-out;
+    cursor: pointer;
+}

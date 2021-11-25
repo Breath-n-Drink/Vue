@@ -6,6 +6,9 @@ Vue.createApp({
       drinks: [],
       nyMåling: 0,
       målingMessage: "",
+      modalDrink: {
+        name: "test",
+      },
       bodyWeight: 75,
     };
   },
@@ -17,7 +20,8 @@ Vue.createApp({
       const url = "http://localhost:33118/api/Promille";
       try {
         const response = await axios.get(url);
-        this.nyMåling = await response.data;
+        var n = await response.data;
+        this.nyMåling = n.toFixed(1);
       } catch (ex) {
         alert(ex.message);
       }
@@ -31,6 +35,9 @@ Vue.createApp({
         alert(ex.message)
       }
     },
+    adjustModal(drink) {
+      this.modalDrink = drink
+    },  
     async getDrinksByPromille() {
       const url = baseUrl + "/drinks?bodyWeight=" + this.bodyWeight + "&bloodAlcCon=" + this.nyMåling
       try {
