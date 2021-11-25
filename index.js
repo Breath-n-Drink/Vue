@@ -36,6 +36,13 @@ Vue.createApp({
       } else {
         return Math.round(pct * 100) + " %"
       }
+    },
+    calculateVol(vol) {
+      if (vol == -1.0) {
+        return "NA"
+      } else {
+        return Math.round(vol) + " mL"
+      }
     }
   },
 }).mount("#app");

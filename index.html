@@ -28,6 +28,7 @@
                     <th scope="col">Billede</th>
                     <th scope="col">Name</th>
                     <th scope="col">Alkohol indhold</th>
+                    <th scope="col">Volumen</th>
                     <th scope="col">Ingredients</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                     <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
                     <td>{{drink.name}}</td>
                     <td>{{calculatePct(drink.alcoholPercentage)}}</td>
+                    <td>{{calculateVol(drink.totalVolume)}}</td>
                     <td>
                         <p v-for="ingredient in drink.ingredientList">
                             {{ingredient}}
