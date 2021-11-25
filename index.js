@@ -6,6 +6,7 @@ Vue.createApp({
       drinks: [],
       nyMåling: 0,
       målingMessage: "",
+      bodyWeight: 75,
     };
   },
   created() {
@@ -29,6 +30,16 @@ Vue.createApp({
       } catch (ex) {
         alert(ex.message)
       }
+    },
+    async getDrinksByPromille() {
+      const url = baseUrl + "/drinks?bodyWeight=" + this.bodyWeight + "&bloodAlcCon=" + this.nyMåling
+      try {
+        const response = await axios.get(url);
+        this.drinks= await response.data;
+      } catch (ex) {
+        alert(ex.message)
+      }
+      
     },
     calculatePct(pct) {
       if (pct == -1.0) {
