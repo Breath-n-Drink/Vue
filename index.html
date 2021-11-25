@@ -23,7 +23,7 @@
         <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille</p>
         <button v-on:click="getDrinksByPromille()" class="btn btn-primary">Forslå opskrifter</button>
         <button v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
-        <table v-if="drinks.length" class="table table-bordered">
+        <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">Billede</th>
@@ -36,7 +36,7 @@
             <tbody>
                 <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks" v-on:click="adjustModal(drink)">
                     <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
-                    <td>{{drink.name}}</td>
+                    <td id="DrinkName">{{drink.name}}</td>
                     <td>{{calculatePct(drink.alcoholPercentage)}}</td>
                     <td>{{calculateVol(drink.totalVolume)}}</td>
                     <td>
