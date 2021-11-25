@@ -68,8 +68,21 @@
         <!-- Modal body -->
         <div class="modal-body">
             <img v-bind:src="modalDrink.imgThumbUrl" alt="ThumbImg" width="70" height="100"><br>
-            {{Math.round(modalDrink.alcoholPercentage * 100)}}% <br>
-          {{modalDrink.instructions}}
+            Alkohol {{Math.round(modalDrink.alcoholPercentage * 100)}}% <br>
+          {{modalDrink.instructions}}<br><br>
+
+          <div class="row">
+            <div class="col-sm-6"><b>Ingredients</b>
+              <p v-for="ingredient in modalDrink.ingredientList">
+                {{ingredient}}
+            </p>
+            </div>
+            <div class="col-sm-6"><b>Measurements</b> 
+              <p v-for="measurement in modalDrink.measurementList">
+                {{measurement}}
+            </p>
+            </div>
+          </div>
         </div>
   
         <!-- Modal footer -->

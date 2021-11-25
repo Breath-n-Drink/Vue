@@ -19,7 +19,8 @@ Vue.createApp({
       const url = "http://localhost:33118/api/Promille";
       try {
         const response = await axios.get(url);
-        this.nyMåling = await response.data;
+        var n = await response.data;
+        this.nyMåling = n.toFixed(1);
       } catch (ex) {
         alert(ex.message);
       }
