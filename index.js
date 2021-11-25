@@ -61,6 +61,15 @@ Vue.createApp({
       } else {
         return Math.round(vol) + " mL"
       }
+    },
+    projectedPromille(vol, pct, bWeight) {
+      if (vol == -1.0) {
+        return "NA"
+      }
+      if (pct == -1.0) {
+        return "NA"
+      }
+      return ((Math.round(((vol*pct*0.78945)/(0.68*bWeight)+Number.EPSILON)*100))/100)
     }
   },
 }).mount("#app");
