@@ -48,7 +48,7 @@
     </div>
     <button v-on:click="getDrinksByPromille(weight, currentBac, maxBac, gender)" class="btn btn-primary" id="recommendButton">Foreslå
       opskrifter</button>
-    <button v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
+    <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
     <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
       <thead>
         <tr>
