@@ -9,17 +9,12 @@ Vue.createApp({
       modalDrink: {
         name: "test",
       },
-      bodyWeight: 75,
       filterArray: [],
-
     };
-  },
-  created() {
-    this.getDrinks()
   },
   methods: {
     async getMåling() {
-      const url = baseUrl + "/Promille"
+      const url = baseUrl + "/promille"
       try {
         const response = await axios.get(url);
         var n = await response.data;

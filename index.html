@@ -26,9 +26,6 @@
     <input type="number" class="number" id="currentBacField" placeholder="Nuværende promille" v-model="currentBac">
     <input type="number" class="number" id="maxBacField" placeholder="Max ønskede promille" v-model="maxBac">
 
-    <button v-on:click="getDrinksByPromille(weight, currentBac, maxBac)" class="btn btn-primary">Forslå
-      opskrifter</button>
-
     <div class="filter" style="width: 500px; margin: auto;">
       <div class="form-check">
         <input class="form-check-input" v-on:click="filter('Vodka')" type="checkbox" value="" id="flexCheckDefault">
@@ -43,6 +40,8 @@
         </label>
       </div>
     </div>
+    <button v-on:click="getDrinksByPromille(weight, currentBac, maxBac)" class="btn btn-primary">Foreslå
+      opskrifter</button>
     <button v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
     <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
       <thead>
@@ -65,14 +64,12 @@
           <td>
             <p v-for="ingredient in drink.ingredientList">
               {{ingredient}}
-
             </p>
           </td>
-          <td>{{projectedPromille(drink.totalVolume, drink.alcoholPercentage, bodyWeight)}}</td>
+          <td>+ {{projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight)}}</td>
         </tr>
       </tbody>
     </table>
-    <div v-else>No drinks</div>
 
     <!-- Button to Open the Modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
