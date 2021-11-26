@@ -2,108 +2,125 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
-    <link rel="Stylesheet" type="text/css" href="index.css">
-    <title>BreathNDrink</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="Stylesheet" type="text/css" href="index.css">
+  <title>BreathNDrink</title>
 </head>
 
 <body>
-    <div id="app" class="container-fluid">
-        <h1>Breath 'n' Drink</h1>
-        <button id="GetMålingButton" v-on:click="getMåling()" class="btn btn-primary">Måling</button>
-        <div id="Promille" v-if="nyMåling"> {{ nyMåling }} </div>
-        <div v-else>ingen målinger</div>
+  <div id="app" class="container-fluid">
+    <h1>Breath 'n' Drink</h1>
+    <button id="GetMålingButton" v-on:click="getMåling()" class="btn btn-primary">Måling</button>
+    <div id="Promille" v-if="nyMåling"> {{ nyMåling }} </div>
+    <div v-else>ingen målinger</div>
 
-        <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille</p>
+    <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille</p>
 
-        <input type="number" class="number" id="weightField" placeholder="Kropsvægt" v-model="weight">
-        <input type="number" class="number" id="currentBacField" placeholder="Nuværende promille" v-model="currentBac">
-        <input type="number" class="number" id="maxBacField" placeholder="Max ønskede promille" v-model="maxBac">
+    <input type="number" class="number" id="weightField" placeholder="Kropsvægt" v-model="weight">
+    <input type="number" class="number" id="currentBacField" placeholder="Nuværende promille" v-model="currentBac">
+    <input type="number" class="number" id="maxBacField" placeholder="Max ønskede promille" v-model="maxBac">
 
-        <button v-on:click="getDrinksByPromille(weight, currentBac, maxBac)" class="btn btn-primary">Forslå opskrifter</button>
-        <button v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
-        <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Billede</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Alkohol indhold</th>
-                    <th scope="col">Volumen</th>
-                    <th scope="col">Ingredients</th>
-                    <th scope="col">PromilleChange</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks" v-on:click="adjustModal(drink)">
-                    <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
-                    <td>{{drink.name}}</td>
-                    <td>{{calculatePct(drink.alcoholPercentage)}}</td>
-                    <td>{{calculateVol(drink.totalVolume)}}</td>
-                    <td>
-                        <p v-for="ingredient in drink.ingredientList">
-                            {{ingredient}}
-                            
-                        </p>
-                    </td>
-                    <td>{{projectedPromille(drink.totalVolume, drink.alcoholPercentage, bodyWeight)}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <div v-else>No drinks</div>
+    <button v-on:click="getDrinksByPromille(weight, currentBac, maxBac)" class="btn btn-primary">Forslå
+      opskrifter</button>
 
-        <!-- Button to Open the Modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-    Open modal
-  </button> -->
-  
-  <!-- The Modal -->
-  <div class="modal" id="myModal" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 id="DrinkName" class="modal-title">{{ modalDrink.name}}</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-            <img v-bind:src="modalDrink.imgThumbUrl" alt="ThumbImg" width="70" height="100"><br>
-           <p id="AlcoholPercentage">Alkohol {{Math.round(modalDrink.alcoholPercentage * 100)}}%</p>  <br>
-          {{modalDrink.instructions}}<br><br>
-
-          <div class="row">
-            <div id="Ingredients" class="col-sm-6"><b>Ingredients</b>
-              <p v-for="ingredient in modalDrink.ingredientList">
-                {{ingredient}}
-            </p>
-            </div>
-            <div id="Measurements" class="col-sm-6"><b>Measurements</b> 
-              <p v-for="measurement in modalDrink.measurementList">
-                {{measurement}}
-            </p>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        </div>
-  
+    <div class="filter" style="width: 500px; margin: auto;">
+      <div class="form-check">
+        <input class="form-check-input" v-on:click="filter('Vodka')" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Vodka
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" v-on:click="filter('Rum')" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Rum
+        </label>
       </div>
     </div>
-  </div>
+    <button v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
+    <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Billede</th>
+          <th scope="col">Name</th>
+          <th scope="col">Alkohol indhold</th>
+          <th scope="col">Volumen</th>
+          <th scope="col">Ingredients</th>
+          <th scope="col">PromilleChange</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks"
+          v-on:click="adjustModal(drink)">
+          <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
+          <td>{{drink.name}}</td>
+          <td>{{calculatePct(drink.alcoholPercentage)}}</td>
+          <td>{{calculateVol(drink.totalVolume)}}</td>
+          <td>
+            <p v-for="ingredient in drink.ingredientList">
+              {{ingredient}}
 
+            </p>
+          </td>
+          <td>{{projectedPromille(drink.totalVolume, drink.alcoholPercentage, bodyWeight)}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div v-else>No drinks</div>
+
+    <!-- Button to Open the Modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Open modal
+  </button> -->
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 id="DrinkName" class="modal-title">{{ modalDrink.name}}</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <img v-bind:src="modalDrink.imgThumbUrl" alt="ThumbImg" width="70" height="100"><br>
+            <p id="AlcoholPercentage">Alkohol {{Math.round(modalDrink.alcoholPercentage * 100)}}%</p> <br>
+            {{modalDrink.instructions}}<br><br>
+
+            <div class="row">
+              <div id="Ingredients" class="col-sm-6"><b>Ingredients</b>
+                <p v-for="ingredient in modalDrink.ingredientList">
+                  {{ingredient}}
+                </p>
+              </div>
+              <div id="Measurements" class="col-sm-6"><b>Measurements</b>
+                <p v-for="measurement in modalDrink.measurementList">
+                  {{measurement}}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
     </div>
-    <script src="index.js"></script>
+
+  </div>
+  <script src="index.js"></script>
 </body>
 
 </html>
