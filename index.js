@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:33118/api";
+const baseUrl = "https://breathndrinkapi.azurewebsites.net/api";
 
 Vue.createApp({
   data() {
@@ -19,7 +19,7 @@ Vue.createApp({
   },
   methods: {
     async getMåling() {
-      const url = "http://localhost:33118/api/Promille";
+      const url = baseUrl + "/Promille"
       try {
         const response = await axios.get(url);
         var n = await response.data;
