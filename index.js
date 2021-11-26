@@ -10,6 +10,8 @@ Vue.createApp({
         name: "test",
       },
       bodyWeight: 75,
+      filterArray: [],
+
     };
   },
   created() {
@@ -70,6 +72,25 @@ Vue.createApp({
         return "NA"
       }
       return ((Math.round(((vol*pct*0.78945)/(0.68*bWeight)+Number.EPSILON)*100))/100)
+    },
+    filter(filterobject) {
+      var Removed = false
+      if(this.filterArray.includes(filterobject)) {
+          this.filterArray = this.filterArray.filter(item => item !== filterobject)
+          Removed = true
+      } else {
+        this.filterArray.push(filterobject)
+      }
+      if(this.filterArray.length > 0) {
+        if(Removed == true) {this.getDrinks()}
+        
+        this.filterArray.forEach(element => {
+
+          setTimeout(() => this.drinks = this.drinks.filter(item => item.ingredientList.includes(element)), 500) 
+      });
+     } else {
+       this.getDrinks()
+     }
     }
   },
 }).mount("#app");
