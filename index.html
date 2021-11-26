@@ -37,7 +37,7 @@
             <tbody>
                 <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks" v-on:click="adjustModal(drink)">
                     <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
-                    <td id="DrinkName">{{drink.name}}</td>
+                    <td>{{drink.name}}</td>
                     <td>{{calculatePct(drink.alcoholPercentage)}}</td>
                     <td>{{calculateVol(drink.totalVolume)}}</td>
                     <td>
@@ -53,11 +53,9 @@
         <div v-else>No drinks</div>
 
         <!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Open modal
-  </button>
-  
-
+  </button> -->
   
   <!-- The Modal -->
   <div class="modal" id="myModal" >
@@ -66,23 +64,23 @@
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">{{ modalDrink.name}}</h4>
+          <h4 id="DrinkName" class="modal-title">{{ modalDrink.name}}</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
   
         <!-- Modal body -->
         <div class="modal-body">
             <img v-bind:src="modalDrink.imgThumbUrl" alt="ThumbImg" width="70" height="100"><br>
-            Alkohol {{Math.round(modalDrink.alcoholPercentage * 100)}}% <br>
+           <p id="AlcoholPercentage">Alkohol {{Math.round(modalDrink.alcoholPercentage * 100)}}%</p>  <br>
           {{modalDrink.instructions}}<br><br>
 
           <div class="row">
-            <div class="col-sm-6"><b>Ingredients</b>
+            <div id="Ingredients" class="col-sm-6"><b>Ingredients</b>
               <p v-for="ingredient in modalDrink.ingredientList">
                 {{ingredient}}
             </p>
             </div>
-            <div class="col-sm-6"><b>Measurements</b> 
+            <div id="Measurements" class="col-sm-6"><b>Measurements</b> 
               <p v-for="measurement in modalDrink.measurementList">
                 {{measurement}}
             </p>
