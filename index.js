@@ -35,8 +35,8 @@ Vue.createApp({
     adjustModal(drink) {
       this.modalDrink = drink
     },  
-    async getDrinksByPromille(weight, currentBac, maxBac) {
-      const url = baseUrl + "/drinks?bodyWeight=" + weight + "&bloodAlcCon=" + currentBac + "&maxBacRequest=" + maxBac + "&gender=" + 0
+    async getDrinksByPromille(weight, currentBac, maxBac, gender = 0) {
+      const url = baseUrl + "/drinks?bodyWeight=" + weight + "&bloodAlcCon=" + currentBac + "&maxBacRequest=" + maxBac + "&gender=" + gender
       try {
         const response = await axios.get(url);
         this.drinks= await response.data;
@@ -59,14 +59,24 @@ Vue.createApp({
         return Math.round(vol) + " mL"
       }
     },
-    projectedPromille(vol, pct, bWeight) {
+    projectedPromille(vol, pct, bWeight, gender = 0) {
       if (vol == -1.0) {
         return "NA"
       }
       if (pct == -1.0) {
         return "NA"
       }
-      return ((Math.round(((vol*pct*0.78945)/(0.68*bWeight)+Number.EPSILON)*100))/100)
+      
+      var ratio
+      if (gender == 0) {
+        ratio = 0.6
+      } else if (gender == 1) {
+        ratio = 0.68
+      } else if (gender == 2) {
+        ratio = 0.55
+      }
+
+      return ((Math.round(((vol*pct*0.78945)/(ratio*bWeight)+Number.EPSILON)*100))/100)
     },
     filter(filterobject) {
       var Removed = false
