@@ -12,7 +12,8 @@
   <script src="https://unpkg.com/vue@next"></script>
   <script>
     $(document).ready(function(){
-        $("#myModalVerify").modal('show');
+      $("#myModalVerify").modal({backdrop: "static"});
+      $("#myModalVerify").modal('show');
     });
   </script>
   <link rel="Stylesheet" type="text/css" href="index.css">
