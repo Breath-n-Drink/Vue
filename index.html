@@ -110,7 +110,7 @@
     </div>
   </div>
 </div>
-
+<div id="hiddenStuff">
     <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p>
     <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
     <div class="filterContainer collapse" id="demo">
@@ -150,9 +150,10 @@
       <button v-on:click="filter()" class="btn btn-primary"
         id="recommendButton">Foreslå
         opskrifter</button>
-    
+  
     
     <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
+  </div>
     <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
       <thead>
         <tr>

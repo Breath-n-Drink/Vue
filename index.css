@@ -3,14 +3,14 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+#hiddenStuff {
+    display: none;
+}
+
 .drink:hover {
     background-color:bisque;
     transition:all 200ms ease-in-out;
     cursor: pointer;
-}
-
-#verificationBody {
-    padding-left: 40%;
 }
 
 body {height: 100vh; font-family: Arial; text-align:center; font-family: Arial, Helvetica, sans-serif;}
