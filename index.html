@@ -41,8 +41,75 @@
   <div id="app" class="container-fluid">
     <h1>Breath 'n' Drink</h1>
     <button id="GetMålingButton" v-on:click="getMåling()" class="btn btn-primary">Måling</button>
-    <div id="Promille" v-if="nyMåling"> {{ nyMåling }} </div>
-    <div v-else>ingen målinger</div>
+    <!-- <div id="Promille" v-if="nyMåling"> {{ nyMåling }} </div>
+    <div v-else>ingen målinger</div> -->
+    <div></div>
+
+<div class="gauge-wrapper">
+  <div v-if="nyMåling <= 1">
+    <div class="gauge four rischio1">
+      <div class="slice-colors">
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+      </div>
+      <div class="needle"></div>
+      <div class="gauge-center">
+        <div class="label">Promille</div>
+        <div class="number">{{ nyMåling }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="nyMåling < 2 && nyMåling > 1">
+    <div class="gauge four rischio2">
+      <div class="slice-colors">
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+      </div>
+      <div class="needle"></div>
+      <div class="gauge-center">
+        <div class="label">Promille</div>
+        <div class="number">{{ nyMåling }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="nyMåling > 2 && nyMåling < 3">
+    <div class="gauge four rischio3">
+      <div class="slice-colors">
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+      </div>
+      <div class="needle"></div>
+      <div class="gauge-center">
+        <div class="label">Promille</div>
+        <div class="number">{{ nyMåling }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="nyMåling > 3">
+    <div class="gauge four rischio4">
+      <div class="slice-colors">
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+        <div class="st slice-item"></div>
+      </div>
+      <div class="needle"></div>
+      <div class="gauge-center">
+        <div class="label">Promille</div>
+        <div class="number">{{ nyMåling }}</div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p>
     <form>

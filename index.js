@@ -10,6 +10,7 @@ Vue.createApp({
         name: "test",
       },
       filterArray: [],
+      hej: "gauge four rischio3",
     };
   },
   methods: {
