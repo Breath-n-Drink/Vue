@@ -129,12 +129,12 @@
         id="recommendButton">Foreslå
         opskrifter</button>
     </form>
-    <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
+    <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
     <div class="filterContainer collapse" id="demo">
       <div class="filter">
         <div class="form-check" v-for="item in filterableItems">
-          <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
+          <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="filterItem">
+          <label class="form-check-label" for="filterItem">
             {{item}}
           </label>
         </div>
