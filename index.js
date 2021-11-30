@@ -77,7 +77,7 @@ Vue.createApp({
         ratio = 0.55
       }
 
-      return ((Math.round(((vol*pct*0.78945)/(ratio*bWeight)+Number.EPSILON)*100))/100)
+      return ((vol*pct*0.78945)/(ratio*bWeight)).toFixed(2)
     },
     filter(filterobject) {
       var Removed = false
