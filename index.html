@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div v-if="nyMåling < 2 && nyMåling > 1">
+  <div v-if="nyMåling < 2 && nyMåling >= 1">
     <div class="gauge four rischio2">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -78,7 +78,7 @@
     </div>
   </div>
 
-  <div v-if="nyMåling > 2 && nyMåling < 3">
+  <div v-if="nyMåling >= 2 && nyMåling < 3">
     <div class="gauge four rischio3">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -94,7 +94,7 @@
     </div>
   </div>
 
-  <div v-if="nyMåling > 3">
+  <div v-if="nyMåling >= 3">
     <div class="gauge four rischio4">
       <div class="slice-colors">
         <div class="st slice-item"></div>
