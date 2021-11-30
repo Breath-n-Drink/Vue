@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div v-if="nyMåling < 2 && nyMåling > 1">
+  <div v-if="nyMåling < 2 && nyMåling >= 1">
     <div class="gauge four rischio2">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -78,7 +78,7 @@
     </div>
   </div>
 
-  <div v-if="nyMåling > 2 && nyMåling < 3">
+  <div v-if="nyMåling >= 2 && nyMåling < 3">
     <div class="gauge four rischio3">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -94,7 +94,7 @@
     </div>
   </div>
 
-  <div v-if="nyMåling > 3">
+  <div v-if="nyMåling >= 3">
     <div class="gauge four rischio4">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -112,7 +112,7 @@
 </div>
 <div id="hiddenStuff">
     <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p>
-    <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
+    <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
     <div class="filterContainer collapse" id="demo">
       <input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt" v-model="weight" required>
       <input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille" v-model="currentBAC" required>
@@ -129,8 +129,8 @@
         
           <div class="filter">
             <div class="form-check" v-for="item in filterableItems">
-              <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
+              <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="filterItem">
+              <label class="form-check-label" for="filterItem">
                 {{item}}
               </label>
             </div>
@@ -139,10 +139,10 @@
           <div class="alcFilter" style="display: flex;">
             <label for="customRange3">Alcohol Percentage</label>
             <br>
-            <input type="range" v-model="filterAlcPer[0]" class="custom-range" min="0" max="100" value="0" id="customRange3"  oninput="this.nextElementSibling.value = this.value">
+            <input type="range" v-model="filterAlcPer[0]" class="custom-range" min="0" max="100" value="0" id="alkoFilter1"  oninput="this.nextElementSibling.value = this.value">
             <output>0</output>
             <br>
-            <input type="range" v-model="filterAlcPer[1]" class="custom-range" min="0" max="100" value="100" id="customRange3" oninput="this.nextElementSibling.value = this.value">
+            <input type="range" v-model="filterAlcPer[1]" class="custom-range" min="0" max="100" value="100" id="alkoFilter2" oninput="this.nextElementSibling.value = this.value">
             <output>100</output>
           </div>
         </div>
