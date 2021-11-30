@@ -36,24 +36,13 @@ Vue.createApp({
       this.modalDrink = drink
     },  
     async getDrinksByPromille(weight, currentBac, maxBac, gender = 0) {
-      var url = baseUrl + "/drinks?"
-      if (weight > 0) {
-        url = url +  "bodyWeight=" + weight
-      }
-      if (currentBac > 0) {
-        url = url + "&bloodAlcCon=" + currentBac
-      }
-      if (maxBac > 0) {
-        url = url + "&maxBacRequest=" + maxBac
-      }
-      if (gender > 0) {
-        url = url + "&gender=" + gender
-      }
+      
+      const url = baseUrl + "/drinks?bodyWeight=" + weight + "&bloodAlcCon=" + currentBac + "&maxBacRequest=" + maxBac + "&gender=" + gender
       try {
         const response = await axios.get(url);
         this.drinks= await response.data;
       } catch (ex) {
-        alert(ex.message)
+        /*alert(ex.message)*/
       }
       
     },
