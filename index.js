@@ -38,7 +38,6 @@ Vue.createApp({
       this.modalDrink = drink
     },  
     async getDrinksByPromille(weight, currentBac, maxBac, gender = 0) {
-      
       const url = baseUrl + "/drinks?bodyWeight=" + weight + "&bloodAlcCon=" + currentBac + "&maxBacRequest=" + maxBac + "&gender=" + gender
       try {
         const response = await axios.get(url);
@@ -46,7 +45,6 @@ Vue.createApp({
       } catch (ex) {
         /*alert(ex.message)*/
       }
-      
     },
     calculatePct(pct) {
       if (pct == -1.0) {
