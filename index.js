@@ -12,6 +12,10 @@ Vue.createApp({
       filterArray: [],
       filterableItems: ["Vodka", "Rum", "Beer", "Champagne", "Cognac", "Gin"],
       filterAlcPer: [0, 100],
+      weight: "",
+      currentBAC: "",
+      maxBAC: "",
+      gender: "0"
     };
   },
   methods: {
@@ -82,23 +86,37 @@ Vue.createApp({
       return ((Math.round(((vol*pct*0.78945)/(ratio*bWeight)+Number.EPSILON)*100))/100)
     },
     addFilter(filterobject) {
-      var Removed = false
       if(this.filterArray.includes(filterobject)) {
           this.filterArray = this.filterArray.filter(item => item !== filterobject)
-          Removed = true
       } else {
         this.filterArray.push(filterobject)
       }
+      
+    },
+    async filter () {
+      var query = ""
       if(this.filterArray.length > 0) {
-        if(Removed == true) {this.getDrinks()}
-        
+       
         this.filterArray.forEach(element => {
 
-          setTimeout(() => this.drinks = this.drinks.filter(item => item.ingredientList.includes(element)), 500) 
+          query += "ingredients=" + element + "&"
       });
-     } else {
-       this.getDrinks()
      }
+
+     query += "minAlcPer=" + this.filterAlcPer[0] + "&maxAlcPer=" + this.filterAlcPer[1]
+
+     if((this.weight !== "") && (this.currentBAC !== "") && (this.maxBAC !== "") && (this.gender !== "")) {
+       query += "&bodyWeight=" + this.weight + "&bloodAlcCon=" + this.currentBAC + "&maxBacRequest=" + this.maxBAC + "&gender=" + this.gender
+     }
+     
+     const url = baseUrl + "/drinks?" + query
+
+     try {
+      const response = await axios.get(url);
+      this.drinks= await response.data;
+      } catch (ex) {
+        /*alert(ex.message)*/
+      }
     }
   },
 }).mount("#app");

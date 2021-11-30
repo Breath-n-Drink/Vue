@@ -45,10 +45,12 @@
     <div v-else>ingen målinger</div>
 
     <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p>
-    <form>
+    <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
+    <div class="filterContainer collapse" id="demo">
       <input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt" v-model="weight" required>
-      <input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille" v-model="currentBac" required>
-      <input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille" v-model="maxBac" required>&nbsp;
+      <input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille" v-model="currentBAC" required>
+      <input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille" v-model="maxBAC" required>&nbsp;
+      <br>
       <input type="radio" id="genderToggleNone" name="genderToggle" value="0" v-model="gender" checked>
       <label for="genderToggleNone">No gender</label>&nbsp;
       <input type="radio" id="genderToggleMan" name="genderToggle" value="1" v-model="gender">
@@ -56,8 +58,8 @@
       <input type="radio" id="genderToggleWoman" name="genderToggle" value="2" v-model="gender">
       <label for="genderToggleWoman">Woman</label>
       <br>
-      <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
-        <div class="filterContainer collapse" id="demo">
+      
+        
           <div class="filter">
             <div class="form-check" v-for="item in filterableItems">
               <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="flexCheckDefault">
@@ -78,10 +80,10 @@
           </div>
         </div>
     
-      <button v-on:click="getDrinksByPromille(weight, currentBac, maxBac, gender)" class="btn btn-primary"
+      <button v-on:click="filter()" class="btn btn-primary"
         id="recommendButton">Foreslå
         opskrifter</button>
-    </form>
+    
     
     <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
     <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
