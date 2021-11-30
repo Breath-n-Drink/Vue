@@ -12,3 +12,26 @@
 #verificationBody {
     padding-left: 40%;
 }
+
+.filter {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 30%));
+    grid-column-gap: 20px;
+    justify-content: center;
+}
+
+.form-check-input{
+    margin-left: 1.9em !important;
+}
+
+.filterContainer {
+    width:100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.alcFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
