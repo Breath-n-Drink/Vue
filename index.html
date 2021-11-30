@@ -57,25 +57,34 @@
       <label for="genderToggleMan">Man</label>&nbsp;
       <input type="radio" id="genderToggleWoman" name="genderToggle" value="2" v-model="gender">
       <label for="genderToggleWoman">Woman</label>
-
-      <div class="filter" style="width: 500px; margin: auto;">
-        <div class="form-check">
-          <input class="form-check-input" v-on:click="filter('Vodka')" type="checkbox" value="" id="vodkaFilter">
-          <label class="form-check-label" for="vodkaFilter">
-            Vodka
-          </label>
+      <br>
+      <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
+        <div class="filterContainer collapse" id="demo">
+          <div class="filter">
+            <div class="form-check" v-for="item in filterableItems">
+              <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{item}}
+              </label>
+            </div>
+            
+          </div>
+          <div class="alcFilter" style="display: flex;">
+            <label for="customRange3">Alcohol Percentage</label>
+            <br>
+            <input type="range" v-model="filterAlcPer[0]" class="custom-range" min="0" max="100" value="0" id="customRange3"  oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
+            <br>
+            <input type="range" v-model="filterAlcPer[1]" class="custom-range" min="0" max="100" value="100" id="customRange3" oninput="this.nextElementSibling.value = this.value">
+            <output>100</output>
+          </div>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" v-on:click="filter('Rum')" type="checkbox" value="" id="rumFilter">
-          <label class="form-check-label" for="rumFilter">
-            Rum
-          </label>
-        </div>
-      </div>
+    
       <button v-on:click="getDrinksByPromille(weight, currentBac, maxBac, gender)" class="btn btn-primary"
         id="recommendButton">Foreslå
         opskrifter</button>
     </form>
+    
     <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
     <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
       <thead>

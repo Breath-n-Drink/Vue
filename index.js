@@ -10,6 +10,8 @@ Vue.createApp({
         name: "test",
       },
       filterArray: [],
+      filterableItems: ["Vodka", "Rum", "Beer", "Champagne", "Cognac", "Gin"],
+      filterAlcPer: [0, 100],
     };
   },
   methods: {
@@ -79,7 +81,7 @@ Vue.createApp({
 
       return ((vol*pct*0.78945)/(ratio*bWeight)).toFixed(2)
     },
-    filter(filterobject) {
+    addFilter(filterobject) {
       var Removed = false
       if(this.filterArray.includes(filterobject)) {
           this.filterArray = this.filterArray.filter(item => item !== filterobject)
