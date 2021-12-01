@@ -1,6 +1,7 @@
 #app {
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    max-width: 1300px;
 }
 
 #hiddenStuff {
@@ -11,6 +12,10 @@ h5 {
   margin-top: 20px;
 }
 
+.login {
+  width: 50%;
+  margin: auto;
+}
 
 .drink:hover {
     background-color:bisque;

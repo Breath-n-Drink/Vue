@@ -4,7 +4,6 @@ Vue.createApp({
   data() {
     return {
       drinks: [],
-      nyMåling: 0,
       målingMessage: "",
       modalDrink: {
         name: "test",
@@ -19,9 +18,33 @@ Vue.createApp({
       maxBAC: "",
       gender: "0",
       filterMessage: "",
+      name: "",
+      userId: 0,
+      loggedIn: false,
+
     };
   },
+  watch: {
+    maxBAC: async function() {
+
+      const url = baseUrl + "/drinkers/" + this.userId
+      try {
+        await axios.put(url, JSON.stringify(this.maxBAC));
+      } catch (ex) {
+        /*alert(ex.message)*/
+      }
+      alert(this.maxBAC)
+    }
+  },
   methods: {
+    async fuck() {
+      const url = baseUrl + "/drinkers/" + this.userId
+      try {
+        await axios.put(url, JSON.stringify(this.maxBAC));
+      } catch (ex) {
+        /*alert(ex.message)*/
+      }
+    },
     async getMåling() {
       const url = baseUrl + "/promille";
       var x = document.getElementById("hiddenStuff");
@@ -29,7 +52,7 @@ Vue.createApp({
       try {
         const response = await axios.get(url);
         var n = await response.data;
-        this.nyMåling = n.toFixed(1);
+        this.currentBAC = n.toFixed(1);
       } catch (ex) {
         alert(ex.message);
       }
@@ -166,6 +189,19 @@ Vue.createApp({
       }
 
       this.filterMessage = "Ingen drinks med disse filtre"
+    },
+    async getDrinker () {
+      this.loggedIn = true;
+      const url = baseUrl + "/drinkers/name=" + this.name
+      var drinker;
+      try {
+        const response = await axios.get(url);
+        drinker = await response.data      
+      } catch (ex) {
+        /*alert(ex.message)*/
+      }
+      this.maxBAC = drinker.maxPromille
+      this.userId = drinker.id
     },
   },
 }).mount("#app");

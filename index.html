@@ -39,14 +39,23 @@
   </div>
 
   <div id="app" class="container-fluid">
+  
+  
+  
     <h1>Breath 'n' Drink</h1>
+
+    <div v-if="!loggedIn" class="login">
+      <input v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <button v-on:click="getDrinker()" class="btn btn-primary">Submit</button>
+    </div>
+<div v-else class="wrapper">
     <button id="GetMålingButton" v-on:click="getMåling()" class="btn btn-primary">Måling</button>
-    <!-- <div id="Promille" v-if="nyMåling"> {{ nyMåling }} </div>
+    <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
     <div v-else>ingen målinger</div> -->
     <div></div>
 
 <div class="gauge-wrapper">
-  <div v-if="nyMåling <= 1">
+  <div v-if="currentBAC <= 1">
     <div class="gauge four rischio1">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -57,12 +66,12 @@
       <div class="needle"></div>
       <div class="gauge-center">
         <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ nyMåling }}</div>
+        <div id="Promille" class="number">{{ currentBAC }}</div>
       </div>
     </div>
   </div>
 
-  <div v-if="nyMåling < 2 && nyMåling >= 1">
+  <div v-if="currentBAC < 2 && currentBAC >= 1">
     <div class="gauge four rischio2">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -73,12 +82,12 @@
       <div class="needle"></div>
       <div class="gauge-center">
         <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ nyMåling }}</div>
+        <div id="Promille" class="number">{{ currentBAC }}</div>
       </div>
     </div>
   </div>
 
-  <div v-if="nyMåling >= 2 && nyMåling < 3">
+  <div v-if="currentBAC >= 2 && currentBAC < 3">
     <div class="gauge four rischio3">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -89,12 +98,12 @@
       <div class="needle"></div>
       <div class="gauge-center">
         <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ nyMåling }}</div>
+        <div id="Promille" class="number">{{ currentBAC }}</div>
       </div>
     </div>
   </div>
 
-  <div v-if="nyMåling >= 3">
+  <div v-if="currentBAC >= 3">
     <div class="gauge four rischio4">
       <div class="slice-colors">
         <div class="st slice-item"></div>
@@ -105,7 +114,7 @@
       <div class="needle"></div>
       <div class="gauge-center">
         <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ nyMåling }}</div>
+        <div id="Promille" class="number">{{ currentBAC }}</div>
       </div>
     </div>
   </div>
@@ -118,6 +127,7 @@
       <input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt" v-model="weight" required>
       <input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille" v-model="currentBAC" required>
       <input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille" v-model="maxBAC" required>&nbsp;
+      <button v-on:click="fuck()" class="btn btn-primary"></button>
       <br>
       <h5>Gender</h5>
       <input type="radio" id="genderToggleNone" name="genderToggle" value="0" v-model="gender" checked>
@@ -196,7 +206,7 @@
       </tbody>
     </table>
     <h5 v-else id="hidden-message">{{filterMessage}}</h5>
-
+  </div>
     <!-- Button to Open the Modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Open modal
