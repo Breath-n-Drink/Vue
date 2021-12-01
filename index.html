@@ -45,8 +45,8 @@
     <h1>Breath 'n' Drink</h1>
 
     <div v-if="!loggedIn" class="login">
-      <input v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <button v-on:click="getDrinker()" class="btn btn-primary">Submit</button>
+      <input v-model="name" class="form-control" id="inputName" aria-describedby="nameHelp">
+      <button id="SubmitButton" v-on:click="getDrinker()" class="btn btn-primary">Submit</button>
     </div>
 <div v-else class="wrapper">
     <button id="GetMålingButton" v-on:click="getMåling()" class="btn btn-primary">Måling</button>
