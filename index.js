@@ -154,7 +154,7 @@ Vue.createApp({
       }
 
       const url = baseUrl + "/drinks?" + query;
-      alert(url)
+
       try {
         const response = await axios.get(url);
         this.drinks = await response.data;
