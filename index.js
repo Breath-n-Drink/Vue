@@ -18,6 +18,7 @@ Vue.createApp({
       currentBAC: "",
       maxBAC: "",
       gender: "0",
+      filterMessage: "",
     };
   },
   methods: {
@@ -117,6 +118,8 @@ Vue.createApp({
     },
 
     async filter() {
+
+      
       var query = "";
       if (this.filterArray.length > 0) {
         this.filterArray.forEach((element) => {
@@ -161,6 +164,8 @@ Vue.createApp({
       } catch (ex) {
         /*alert(ex.message)*/
       }
+
+      this.filterMessage = "Ingen drinks med disse filtre"
     },
   },
 }).mount("#app");
