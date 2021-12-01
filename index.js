@@ -21,15 +21,20 @@ Vue.createApp({
       name: "",
       userId: 0,
       loggedIn: false,
-
+      
     };
   },
   watch: {
     maxBAC: async function() {
-
+      const options = {
+        headers: {
+             "content-type": "application/vnd.api+json",
+              "Accept": "application/vnd.api+json"
+        }
+    }
       const url = baseUrl + "/drinkers/" + this.userId
       try {
-        await axios.put(url, JSON.stringify(this.maxBAC));
+        await axios.put(url, JSON.stringify(this.maxBAC), options);
       } catch (ex) {
         /*alert(ex.message)*/
       }
@@ -37,14 +42,6 @@ Vue.createApp({
     }
   },
   methods: {
-    async fuck() {
-      const url = baseUrl + "/drinkers/" + this.userId
-      try {
-        await axios.put(url, JSON.stringify(this.maxBAC));
-      } catch (ex) {
-        /*alert(ex.message)*/
-      }
-    },
     async getMåling() {
       const url = baseUrl + "/promille";
       var x = document.getElementById("hiddenStuff");
