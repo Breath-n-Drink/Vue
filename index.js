@@ -10,7 +10,9 @@ Vue.createApp({
         name: "test",
       },
       filterArray: [],
+      notFilterArray: [],
       filterableItems: ["Vodka", "Rum", "Beer", "Champagne", "Cognac", "Gin"],
+      notFilterableItems: ["Vodka", "Rum", "Beer", "Champagne", "Cognac", "Gin"],
       filterAlcPer: [0, 100],
       weight: "",
       currentBAC: "",
@@ -103,11 +105,28 @@ Vue.createApp({
         this.filterArray.push(filterobject);
       }
     },
+
+    addNotFilter(filterobject) {
+      if (this.notFilterArray.includes(filterobject)) {
+        this.notFilterArray = this.notFilterArray.filter(
+          (item) => item !== filterobject
+        );
+      } else {
+        this.notFilterArray.push(filterobject);
+      }
+    },
+
     async filter() {
       var query = "";
       if (this.filterArray.length > 0) {
         this.filterArray.forEach((element) => {
           query += "ingredients=" + element + "&";
+        });
+      }
+
+      if (this.notFilterArray.length > 0) {
+        this.notFilterArray.forEach((element) => {
+          query += "notFilter=" + element + "&";
         });
       }
 
@@ -135,7 +154,7 @@ Vue.createApp({
       }
 
       const url = baseUrl + "/drinks?" + query;
-
+      alert(url)
       try {
         const response = await axios.get(url);
         this.drinks = await response.data;
