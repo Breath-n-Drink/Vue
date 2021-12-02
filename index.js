@@ -21,7 +21,7 @@ Vue.createApp({
       name: "",
       userId: 0,
       loggedIn: false,
-      
+      checkBoxes: document.getElementsByClassName("form-check-input").outerHTML
     };
   },
   watch: {
@@ -200,5 +200,11 @@ Vue.createApp({
       this.maxBAC = drinker.maxPromille
       this.userId = drinker.id
     },
+    resetFilters () {
+      this.filterArray = []
+      this.notFilterArray = []
+      this.filterAlcPer[0] = 0
+      this.filterAlcPer[1] = 100
+    }
   },
 }).mount("#app");
