@@ -21,7 +21,6 @@ Vue.createApp({
       name: "",
       userId: 0,
       loggedIn: false,
-      
     };
   },
   watch: {
@@ -61,6 +60,14 @@ Vue.createApp({
         this.drinks = await response.data;
       } catch (ex) {
         // alert(ex.message);
+      }
+    },
+    async addRating(ratingValue) {
+      const url = baseUrl + `/Drinks?id=${this.modalDrink.drinkId}&rating=${ratingValue}`
+      try {
+        await axios.post(url)
+      } catch (ex) {
+        alert(this.modalDrink.drinkId);
       }
     },
     adjustModal(drink) {
