@@ -161,9 +161,7 @@ h1 {text-align:center;}
   padding: 0;
 }
 .rate {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transform: translate(-31.3%, 0);
   height: 46px;
   padding: 0 10px;
 }
