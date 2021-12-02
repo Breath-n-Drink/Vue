@@ -38,7 +38,7 @@ Vue.createApp({
       } catch (ex) {
         /*alert(ex.message)*/
       }
-      alert(this.maxBAC)
+      // alert(this.maxBAC)
     }
   },
   methods: {
@@ -51,7 +51,7 @@ Vue.createApp({
         var n = await response.data;
         this.currentBAC = n.toFixed(1);
       } catch (ex) {
-        alert(ex.message);
+        // alert(ex.message);
       }
     },
     async getDrinks() {
@@ -60,7 +60,7 @@ Vue.createApp({
         const response = await axios.get(url);
         this.drinks = await response.data;
       } catch (ex) {
-        alert(ex.message);
+        // alert(ex.message);
       }
     },
     adjustModal(drink) {
