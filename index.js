@@ -4,7 +4,6 @@ Vue.createApp({
   data() {
     return {
       drinks: [],
-      målingMessage: "",
       modalDrink: {
         name: "test",
       },
@@ -41,7 +40,7 @@ Vue.createApp({
     }
   },
   methods: {
-    async getMåling() {
+    async getAlchoholLevel() {
       const url = baseUrl + "/promille";
       var x = document.getElementById("hiddenStuff");
       x.style.display = "block";
