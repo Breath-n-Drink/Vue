@@ -161,7 +161,9 @@ h1 {text-align:center;}
   padding: 0;
 }
 .rate {
-  position:initial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 46px;
   padding: 0 10px;
 }
