@@ -62,8 +62,8 @@ Vue.createApp({
         // alert(ex.message);
       }
     },
-    async addRating(ratingValue) {
-      const url = baseUrl + `/Drinks?id=${this.modalDrink.drinkId}&rating=${ratingValue}`
+    async addRating(ratingValue) { 
+      const url = baseUrl + `/Drinks?id=${this.modalDrink.drinkId}&drinkerId=${this.userId}&rating=${ratingValue}`
       try {
         await axios.post(url)
       } catch (ex) {
