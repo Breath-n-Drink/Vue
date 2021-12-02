@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9b772bff-5606-48eb-a256-20be8102e148/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/BreathNDrinkVue",
+    "appService.deploySubpath": "."
+}
