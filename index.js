@@ -67,7 +67,7 @@ Vue.createApp({
       try {
         await axios.post(url)
       } catch (ex) {
-        alert(this.modalDrink.drinkId);
+        // alert(this.modalDrink.drinkId);
       }
     },
     adjustModal(drink) {
