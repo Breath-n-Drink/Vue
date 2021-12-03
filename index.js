@@ -18,18 +18,19 @@ Vue.createApp({
       gender: "0",
       filterMessage: "",
       name: "",
+      nameFilter: "",
       userId: 0,
       loggedIn: false,
     };
   },
   watch: {
-    maxBAC: async function() {
+    maxBAC: async function () {
       const options = {
         headers: {
-             "content-type": "application/vnd.api+json",
-              "Accept": "application/vnd.api+json"
+          "content-type": "application/vnd.api+json",
+          "Accept": "application/vnd.api+json"
         }
-    }
+      }
       const url = baseUrl + "/drinkers/" + this.userId
       try {
         await axios.put(url, JSON.stringify(this.maxBAC), options);
@@ -61,7 +62,7 @@ Vue.createApp({
         // alert(ex.message);
       }
     },
-    async addRating(ratingValue) { 
+    async addRating(ratingValue) {
       const url = baseUrl + `/Drinks?id=${this.modalDrink.drinkId}&drinkerId=${this.userId}&rating=${ratingValue}`
       try {
         await axios.post(url)
@@ -73,6 +74,8 @@ Vue.createApp({
       this.modalDrink = drink;
     },
     async getDrinksByPromille(weight, currentBac, maxBac, gender = 0) {
+      console.log("Drinks by promille")
+
       const url =
         baseUrl +
         "/drinks?bodyWeight=" +
@@ -144,9 +147,12 @@ Vue.createApp({
     },
 
     async filter() {
+      var query = "?";
 
-      
-      var query = "";
+      if (this.nameFilter !== "") {
+        query += "name=" + this.nameFilter + "&"
+      }
+
       if (this.filterArray.length > 0) {
         this.filterArray.forEach((element) => {
           query += "ingredients=" + element + "&";
@@ -192,21 +198,23 @@ Vue.createApp({
       }
 
       this.filterMessage = "Ingen drinks med disse filtre"
+
+      console.log(query)
     },
-    async getDrinker () {
+    async getDrinker() {
       this.loggedIn = true;
       const url = baseUrl + "/drinkers/name=" + this.name
       var drinker;
       try {
         const response = await axios.get(url);
-        drinker = await response.data      
+        drinker = await response.data
       } catch (ex) {
         /*alert(ex.message)*/
       }
       this.maxBAC = drinker.maxPromille
       this.userId = drinker.id
     },
-    resetFilters () {
+    resetFilters() {
       this.filterArray = []
       this.notFilterArray = []
       this.filterAlcPer[0] = 0
