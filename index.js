@@ -75,7 +75,6 @@ Vue.createApp({
       this.modalDrink = drink;
     },
     async getDrinksByPromille(weight, currentBac, maxBac, gender = 0) {
-      console.log("Drinks by promille")
 
       const url =
         baseUrl +
@@ -148,7 +147,7 @@ Vue.createApp({
     },
 
     async filter() {
-      var query = "?";
+      var query = "";
 
       if (this.nameFilter !== "") {
         query += "name=" + this.nameFilter + "&"
@@ -193,14 +192,15 @@ Vue.createApp({
 
       try {
         const response = await axios.get(url);
-        this.drinks = await response.data;
+        this.drinks = await response.data; 
       } catch (ex) {
         /*alert(ex.message)*/
       }
 
       this.filterMessage = "Ingen drinks med disse filtre"
 
-      console.log(query)
+      console.log(url)
+      console.log("nameFilter: " + this.nameFilter)
     },
     async getDrinker() {
       this.loggedIn = true;

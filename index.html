@@ -197,7 +197,7 @@
         <thead>
           <tr>
             <th scope="col">Billede</th>
-            <th scope="col">Name<input type="text" class="text" placeholder="Search by name" v-model="nameFilter" v-on:change="filter()"></th>
+            <th scope="col">Name &nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name" v-model="nameFilter"><button id="nameFilterButton" class="btn" v-on:click="filter()">Search</button></th>
             <th scope="col">Alkohol indhold</th>
             <th scope="col">Volumen</th>
             <th scope="col">Ingredients</th>
