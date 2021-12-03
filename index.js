@@ -22,6 +22,7 @@ Vue.createApp({
       nameFilter: "",
       userId: 0,
       loggedIn: false,
+      sortByRating: 0
     };
   },
   watch: {
@@ -55,7 +56,7 @@ Vue.createApp({
       }
     },
     async getDrinks() {
-      const url = baseUrl + "/drinks";
+      const url = baseUrl + "/drinks" + "?sortByRating=" + this.sortByRating;
       try {
         const response = await axios.get(url);
         this.drinks = await response.data;
@@ -187,6 +188,7 @@ Vue.createApp({
           "&gender=" +
           this.gender;
       }
+      query += "&sortByRating=" + this.sortByRating
 
       const url = baseUrl + "/drinks?" + query;
 
