@@ -38,6 +38,9 @@ Vue.createApp({
         /*alert(ex.message)*/
       }
       // alert(this.maxBAC)
+    },
+    nameFilter: function (newName, oldName){
+      this.filter()
     }
   },
   methods: {
@@ -74,7 +77,6 @@ Vue.createApp({
       this.modalDrink = drink;
     },
     async getDrinksByPromille(weight, currentBac, maxBac, gender = 0) {
-      console.log("Drinks by promille")
 
       const url =
         baseUrl +
@@ -147,7 +149,7 @@ Vue.createApp({
     },
 
     async filter() {
-      var query = "?";
+      var query = "";
 
       if (this.nameFilter !== "") {
         query += "name=" + this.nameFilter + "&"
@@ -199,7 +201,8 @@ Vue.createApp({
 
       this.filterMessage = "Ingen drinks med disse filtre"
 
-      console.log(query)
+      console.log(url)
+      console.log("nameFilter: " + this.nameFilter)
     },
     async getDrinker() {
       this.loggedIn = true;
