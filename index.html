@@ -39,174 +39,181 @@
   </div>
 
   <div id="app" class="container-fluid">
-  
-  
-  
+
+
+
     <h1>Breath 'n' Drink</h1>
 
     <div v-if="!loggedIn" class="login">
       <input v-model="name" class="form-control" id="inputName" aria-describedby="nameHelp">
       <button id="SubmitButton" v-on:click="getDrinker()" class="btn btn-primary">Submit</button>
     </div>
-<div v-else class="wrapper">
-    <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Måling</button>
-    <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
+    <div v-else class="wrapper">
+      <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Måling</button>
+      <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
     <div v-else>ingen målinger</div> -->
-    <div></div>
+      <div></div>
 
-<div class="gauge-wrapper">
-  <div v-if="currentBAC <= 1">
-    <div class="gauge four rischio1">
-      <div class="slice-colors">
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-      </div>
-      <div class="needle"></div>
-      <div class="gauge-center">
-        <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ currentBAC }}</div>
-      </div>
-    </div>
-  </div>
+      <div class="gauge-wrapper">
+        <div v-if="currentBAC <= 1">
+          <div class="gauge four rischio1">
+            <div class="slice-colors">
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+            </div>
+            <div class="needle"></div>
+            <div class="gauge-center">
+              <div class="label">Promille</div>
+              <div id="Promille" class="number">{{ currentBAC }}</div>
+            </div>
+          </div>
+        </div>
 
-  <div v-if="currentBAC < 2 && currentBAC >= 1">
-    <div class="gauge four rischio2">
-      <div class="slice-colors">
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-      </div>
-      <div class="needle"></div>
-      <div class="gauge-center">
-        <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ currentBAC }}</div>
-      </div>
-    </div>
-  </div>
+        <div v-if="currentBAC < 2 && currentBAC >= 1">
+          <div class="gauge four rischio2">
+            <div class="slice-colors">
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+            </div>
+            <div class="needle"></div>
+            <div class="gauge-center">
+              <div class="label">Promille</div>
+              <div id="Promille" class="number">{{ currentBAC }}</div>
+            </div>
+          </div>
+        </div>
 
-  <div v-if="currentBAC >= 2 && currentBAC < 3">
-    <div class="gauge four rischio3">
-      <div class="slice-colors">
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-      </div>
-      <div class="needle"></div>
-      <div class="gauge-center">
-        <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ currentBAC }}</div>
-      </div>
-    </div>
-  </div>
+        <div v-if="currentBAC >= 2 && currentBAC < 3">
+          <div class="gauge four rischio3">
+            <div class="slice-colors">
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+            </div>
+            <div class="needle"></div>
+            <div class="gauge-center">
+              <div class="label">Promille</div>
+              <div id="Promille" class="number">{{ currentBAC }}</div>
+            </div>
+          </div>
+        </div>
 
-  <div v-if="currentBAC >= 3">
-    <div class="gauge four rischio4">
-      <div class="slice-colors">
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
-        <div class="st slice-item"></div>
+        <div v-if="currentBAC >= 3">
+          <div class="gauge four rischio4">
+            <div class="slice-colors">
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+              <div class="st slice-item"></div>
+            </div>
+            <div class="needle"></div>
+            <div class="gauge-center">
+              <div class="label">Promille</div>
+              <div id="Promille" class="number">{{ currentBAC }}</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="needle"></div>
-      <div class="gauge-center">
-        <div class="label">Promille</div>
-        <div id="Promille" class="number">{{ currentBAC }}</div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="hiddenStuff">
-    <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p>
-    <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
-    <div class="filterContainer collapse" id="demo">
-      <h5>Info</h5>
-      <input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt" v-model="weight" required>
-      <input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille" v-model="currentBAC" required>
-      <input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille" v-model="maxBAC" required>&nbsp;
-      <br>
-      <h5>Gender</h5>
-      <input type="radio" id="genderToggleNone" name="genderToggle" value="0" v-model="gender" checked>
-      <label for="genderToggleNone">No gender</label>&nbsp;
-      <input type="radio" id="genderToggleMan" name="genderToggle" value="1" v-model="gender">
-      <label for="genderToggleMan">Man</label>&nbsp;
-      <input type="radio" id="genderToggleWoman" name="genderToggle" value="2" v-model="gender">
-      <label for="genderToggleWoman">Woman</label>
-      <br>
-      
+      <div id="hiddenStuff">
+        <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p>
+        <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse"
+          data-bs-target="#demo">Filters</button><br>
+        <div class="filterContainer collapse" id="demo">
+          <h5>Info</h5>
+          <input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt" v-model="weight"
+            required>
+          <input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille"
+            v-model="currentBAC" required>
+          <input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille"
+            v-model="maxBAC" required>&nbsp;
+          <br>
+          <h5>Gender</h5>
+          <input type="radio" id="genderToggleNone" name="genderToggle" value="0" v-model="gender" checked>
+          <label for="genderToggleNone">No gender</label>&nbsp;
+          <input type="radio" id="genderToggleMan" name="genderToggle" value="1" v-model="gender">
+          <label for="genderToggleMan">Man</label>&nbsp;
+          <input type="radio" id="genderToggleWoman" name="genderToggle" value="2" v-model="gender">
+          <label for="genderToggleWoman">Woman</label>
+          <br>
+
           <h5>Include</h5>
           <div class="filter">
             <div class="form-check" v-for="item in filterableItems">
-              <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="filterItem" name="checkboxes">
+              <input class="form-check-input" v-on:click="addFilter(item)" type="checkbox" value="" id="filterItem"
+                name="checkboxes">
               <label class="form-check-label" for="filterItem">
                 {{item}}
               </label>
             </div>
-            
+
           </div>
           <h5>Do not include</h5>
           <div class="filter">
             <div class="form-check" v-for="item in notFilterableItems">
-              <input class="form-check-input" v-on:click="addNotFilter(item)" type="checkbox" value="" id="filterNotItem">
+              <input class="form-check-input" v-on:click="addNotFilter(item)" type="checkbox" value=""
+                id="filterNotItem">
               <label class="form-check-label" for="filterNotItem">
                 {{item}}
               </label>
             </div>
-            
+
           </div>
           <div class="alcFilter" style="display: flex;">
             <h5>Alkohol procent</h5>
 
-            <input type="range" v-model="filterAlcPer[0]" class="custom-range" min="0" max="100" value="0" id="alkoFilter1"  oninput="this.nextElementSibling.value = 'Minimum: ' + this.value + '%'">
+            <input type="range" v-model="filterAlcPer[0]" class="custom-range" min="0" max="100" value="0"
+              id="alkoFilter1" oninput="this.nextElementSibling.value = 'Minimum: ' + this.value + '%'">
             <output name="rangeOutput">Minimum: 0%</output>
 
-            <input type="range" v-model="filterAlcPer[1]" class="custom-range" min="0" max="100" value="100" id="alkoFilter2" oninput="this.nextElementSibling.value = 'Maximum: ' + this.value  + '%'">
+            <input type="range" v-model="filterAlcPer[1]" class="custom-range" min="0" max="100" value="100"
+              id="alkoFilter2" oninput="this.nextElementSibling.value = 'Maximum: ' + this.value  + '%'">
             <output name="rangeOutput">Maximum: 100%</output>
           </div>
           <button class="btn btn-danger" v-on:click="resetFilters()" onclick="resetFilters()">Reset</button>
         </div>
-    <br>
-      <button v-on:click="filter()" class="btn btn-primary"
-        id="recommendButton">Foreslå
-        opskrifter</button>
-  
-    
-    <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
-  </div>
-    <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Billede</th>
-          <th scope="col">Name</th>
-          <th scope="col">Alkohol indhold</th>
-          <th scope="col">Volumen</th>
-          <th scope="col">Ingredients</th>
-          <th scope="col">PromilleChange</th>
-          <th scope="col">Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks"
-          v-on:click="adjustModal(drink)">
-          <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
-          <td>{{drink.name}}</td>
-          <td>{{calculatePct(drink.alcoholPercentage)}}</td>
-          <td>{{calculateVol(drink.totalVolume)}}</td>
-          <td>
-            <p v-for="ingredient in drink.ingredientList">
-              {{ingredient}}
-            </p>
-          </td>
-          <td>+ {{projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight, gender)}}</td>
-          <td>{{drink.rating.toFixed(1)}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <h5 v-else id="hidden-message">{{filterMessage}}</h5>
-  </div>
+        <br>
+        <button v-on:click="filter()" class="btn btn-primary" id="recommendButton">Foreslå
+          opskrifter</button>
+
+
+        <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
+      </div>
+      <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Billede</th>
+            <th scope="col">Name<input type="text" class="text" placeholder="Search by name" v-model="nameFilter" v-on:change="filter()"></th>
+            <th scope="col">Alkohol indhold</th>
+            <th scope="col">Volumen</th>
+            <th scope="col">Ingredients</th>
+            <th scope="col">PromilleChange</th>
+            <th scope="col">Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks"
+            v-on:click="adjustModal(drink)">
+            <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
+            <td>{{drink.name}}</td>
+            <td>{{calculatePct(drink.alcoholPercentage)}}</td>
+            <td>{{calculateVol(drink.totalVolume)}}</td>
+            <td>
+              <p v-for="ingredient in drink.ingredientList">
+                {{ingredient}}
+              </p>
+            </td>
+            <td>+ {{projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight, gender)}}</td>
+            <td>{{drink.rating.toFixed(1)}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 v-else id="hidden-message">{{filterMessage}}</h5>
+    </div>
     <!-- Button to Open the Modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Open modal
@@ -243,15 +250,15 @@
             </div>
             <p id="ratingText">Rating</p>
             <div class="rate">
-              <input type="radio" id="star5" name="rate" value="5" v-on:click="addRating(5)"/>
+              <input type="radio" id="star5" name="rate" value="5" v-on:click="addRating(5)" />
               <label for="star5" title="text">5 stars</label>
-              <input type="radio" id="star4" name="rate" value="4" v-on:click="addRating(4)"/>
+              <input type="radio" id="star4" name="rate" value="4" v-on:click="addRating(4)" />
               <label for="star4" title="text">4 stars</label>
-              <input type="radio" id="star3" name="rate" value="3" v-on:click="addRating(3)"/>
+              <input type="radio" id="star3" name="rate" value="3" v-on:click="addRating(3)" />
               <label for="star3" title="text">3 stars</label>
-              <input type="radio" id="star2" name="rate" value="2" v-on:click="addRating(2)"/>
+              <input type="radio" id="star2" name="rate" value="2" v-on:click="addRating(2)" />
               <label for="star2" title="text">2 stars</label>
-              <input type="radio" id="star1" name="rate" value="1" v-on:click="addRating(1)"/>
+              <input type="radio" id="star1" name="rate" value="1" v-on:click="addRating(1)" />
               <label for="star1" title="text">1 star</label>
             </div>
           </div>
@@ -270,12 +277,12 @@
   <script>
     var checkBoxes = document.getElementsByClassName("form-check-input")
     var range = document.getElementsByName("rangeOutput")
-    function resetFilters () {
+    function resetFilters() {
       for (i = 0; i < checkBoxes.length; i++) {
         checkBoxes[i].checked = false
       }
-       range[0].value = "Minimum: 0%"
-       range[1].value = "Maximum: 100%"
+      range[0].value = "Minimum: 0%"
+      range[1].value = "Maximum: 100%"
     }
   </script>
   <script src="index.js"></script>
