@@ -38,9 +38,6 @@ Vue.createApp({
         /*alert(ex.message)*/
       }
       // alert(this.maxBAC)
-    },
-    nameFilter: function (newName, oldName){
-      this.filter()
     }
   },
   methods: {
@@ -194,7 +191,7 @@ Vue.createApp({
 
       try {
         const response = await axios.get(url);
-        this.drinks = await response.data;
+        this.drinks = await response.data; 
       } catch (ex) {
         /*alert(ex.message)*/
       }
