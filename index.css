@@ -12,6 +12,10 @@ h5 {
   margin-top: 20px;
 }
 
+#hejId {
+  position:fixed; top:0; left:0;
+}
+
 .login {
   width: 50%;
   margin: auto;
