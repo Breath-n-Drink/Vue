@@ -1,5 +1,6 @@
 const baseUrl = "https://breathndrinkapi.azurewebsites.net/api";
 
+
 Vue.createApp({
   data() {
     return {
@@ -209,10 +210,18 @@ Vue.createApp({
         const response = await axios.get(url);
         drinker = await response.data
       } catch (ex) {
-        /*alert(ex.message)*/
+        
       }
       this.maxBAC = drinker.maxPromille
       this.userId = drinker.id
+    },
+    async addDrinker() {
+      const url = baseUrl + `/drinkers?name=${this.name}`
+      try {
+        const response = await axios.post(url)
+      } catch (ex) {
+
+      }
     },
     resetFilters() {
       this.filterArray = []

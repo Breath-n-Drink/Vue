@@ -47,6 +47,7 @@
     <div v-if="!loggedIn" class="login">
       <input v-model="name" class="form-control" id="inputName" aria-describedby="nameHelp">
       <button id="SubmitButton" v-on:click="getDrinker()" class="btn btn-primary">Submit</button>
+      <button id="AddButton" v-on:click="addDrinker()" class="btn btn-primary">Add new name</button>
     </div>
     <div v-else class="wrapper">
       <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Måling</button>
