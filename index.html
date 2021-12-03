@@ -205,7 +205,7 @@
             <th scope="col">Volumen</th>
             <th scope="col">Ingredients</th>
             <th scope="col">PromilleChange</th>
-            <th scope="col">Rating</th>
+            <th scope="col">Rating<button id="sortByRatingBtn0" class="btn" v-if="sortByRating==0" v-on:click="sortByRating = 1; filter()">⮃</button><button id="sortByRatingBtn1" class="btn" v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">↑</button><button id="sortByRatingBtn2" class="btn" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">↓</button></th>
           </tr>
         </thead>
         <tbody>
