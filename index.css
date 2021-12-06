@@ -14,8 +14,8 @@ h5 {
 
 #promilleSkala {
   height: 40%;
-  width: 30%;
-  position:fixed; top:0; right:0;
+  width: 25%;
+  position:absolute; top:0; right:0;
 }
 
 #logoId {
