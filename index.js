@@ -7,9 +7,6 @@ Vue.createApp({
       modalDrink: {
         name: "test",
       },
-      modalBacMeasurement: {
-        name: "test",
-      },
       filterArray: [],
       notFilterArray: [],
       filterableItems: ["Vodka", "Rum", "Beer", "Champagne", "Cognac", "Gin"],
@@ -45,21 +42,21 @@ Vue.createApp({
     }
   },
   methods: {
-    async countdownTimer() {
-      var seconds = 5;
-      document.getElementById("secondsLeft").innerHTML = seconds;
-      setInterval(function() {
-        seconds -= 1;
-        document.getElementById("secondsLeft").innerHTML = seconds;
-      }, 1000);
-    },
-    async getAlchoholLevel() {
-      $("#myModalMeasurement").modal({ backdrop: "static" });
-      $("#myModalMeasurement").modal('show');
-      this.modalBacMeasurement;
+    async getAlcoholLevel() {
       const url = baseUrl + "/promille";
       var x = document.getElementById("hiddenStuff");
       x.style.display = "block";
+      try {
+        const response = await axios.get(url);
+        var n = await response.data;
+        this.currentBAC = n.toFixed(1);
+      } catch (ex) {
+        // alert(ex.message);
+      }
+    },
+    async showMeasurementModal() {
+      $("#myModalMeasurement").modal({ backdrop: "static" });
+      $("#myModalMeasurement").modal('show');
     },
     async getDrinks() {
       const url = baseUrl + "/drinks" + "?sortByRating=" + this.sortByRating;
