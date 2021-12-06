@@ -1,6 +1,5 @@
 const baseUrl = "https://breathndrinkapi.azurewebsites.net/api";
 
-
 Vue.createApp({
   data() {
     return {
@@ -44,7 +43,7 @@ Vue.createApp({
     }
   },
   methods: {
-    async getAlchoholLevel() {
+    async getAlcoholLevel() {
       const url = baseUrl + "/promille";
       var x = document.getElementById("hiddenStuff");
       x.style.display = "block";
@@ -56,6 +55,10 @@ Vue.createApp({
         // alert(ex.message);
       }
       this.funnyCommentMethod()
+    },
+    async showMeasurementModal() {
+      $("#myModalMeasurement").modal({ backdrop: "static" });
+      $("#myModalMeasurement").modal('show');
     },
     async getDrinks() {
       const url = baseUrl + "/drinks" + "?sortByRating=" + this.sortByRating;

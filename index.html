@@ -40,10 +40,25 @@
       </div>
     </div>
   </div>
-
   <div id="app" class="container-fluid">
-
-
+    <div id="myModalMeasurement" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New measurement</h5>
+          </div>
+          <!-- <div id="ready" class="collapse">
+            <b id="blowNow">Blow!</b>
+            <p id="secondsLeft"></p>
+          </div> -->
+          <div class="modal-body">
+            <p>Hold sensor about five cm from mouth and blow consistently for five seconds. Press 'Done' when you are
+              done.</p>
+            <a id="doneButton" data-bs-dismiss="modal" class="btn btn-primary" v-on:click="getAlcoholLevel()">Done</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <h1>Breath 'n' Drink</h1>
 
@@ -53,9 +68,10 @@
       <button id="AddButton" v-on:click="addDrinker()" class="btn btn-primary">Add new name</button>
     </div>
     <div v-else class="wrapper">
-      <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Measure</button>
+      <button id="GetAlchoholLevelButton" v-on:click="showMeasurementModal()" class="btn btn-primary">Start
+        måling</button>
       <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
-    <div v-else>ingen målinger</div> -->
+      <div v-else>ingen målinger</div> -->
       <div></div>
 
       <div class="gauge-wrapper">
@@ -125,6 +141,7 @@
       </div>
       
       <div id="hiddenStuff">
+        <!-- <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p> -->
         <p>{{ funnyComment }}</p> 
         <a href="https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholens-virkninger/"><img src="/21732_promille2502x2502.jpg" alt="Sunhed.dk" id="promilleSkala"></a>
         <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse"
