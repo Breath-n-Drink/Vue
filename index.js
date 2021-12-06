@@ -22,7 +22,8 @@ Vue.createApp({
       nameFilter: "",
       userId: 0,
       loggedIn: false,
-      sortByRating: 0
+      sortByRating: 0,
+      funnyComment: ""
     };
   },
   watch: {
@@ -54,6 +55,7 @@ Vue.createApp({
       } catch (ex) {
         // alert(ex.message);
       }
+      this.funnyCommentMethod()
     },
     async getDrinks() {
       const url = baseUrl + "/drinks" + "?sortByRating=" + this.sortByRating;
@@ -233,7 +235,22 @@ Vue.createApp({
     },
     getRandomDrink(){
       this.modalDrink = this.drinks[Math.floor(Math.random() * this.drinks.length)]
-      console.log("Modal Drink: " + this.modalDrink)
+    },
+    funnyCommentMethod(){
+      if(this.currentBAC < 0.7)
+      {
+        this.funnyComment = "You're fine mate, drink some more"
+      } 
+      else if (this.currentBAC >= 0.7 && this.currentBAC < 1.4)
+      {
+        this.funnyComment = "Continue onwards!!!"
+      } else if (this.currentBAC >= 1.4 && this.currentBAC < 2.9)
+      {
+        this.funnyComment = "It's time to stop (insert man with clock meme here)"
+      } else
+      {
+        this.funnyComment = "ba-bu, ba-bu, ba-bu, ba-bu"
+      }
     }
   },
 }).mount("#app");
