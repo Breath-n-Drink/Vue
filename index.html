@@ -22,16 +22,16 @@
 
 <body>
   <a href="#">
-  <img src="/mojito-6392430_1280.jpg" alt="BreathLogo" id="hejId" height="150px" width="150px">
+  <img src="/mojito-6392430_1280.jpg" alt="BreathLogo" id="hejId" height="150" width="150">
 </a>
   <div id="myModalVerify" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Are you 18?</h5>
+          <h5 class="modal-title">Er du 18 år gammel</h5>
         </div>
         <div id="verify" class="collapse">
-          <b id="ageAlert">You need to be 18 to use this app!!!</b>
+          <b id="ageAlert">Du skal være 18 år gammel!!!</b>
         </div>
         <div id="verificationBody" class="modal-body">
           <button id="yesButton" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
@@ -86,7 +86,7 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille" class="number">{{ currentBAC }}</div>
+              <div id="Promille2" class="number">{{ currentBAC }}</div>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille" class="number">{{ currentBAC }}</div>
+              <div id="Promille3" class="number">{{ currentBAC }}</div>
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille" class="number">{{ currentBAC }}</div>
+              <div id="Promille4" class="number">{{ currentBAC }}</div>
             </div>
           </div>
         </div>
@@ -200,7 +200,7 @@
         <thead>
           <tr>
             <th scope="col">Billede</th>
-            <th scope="col">Name&nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name" v-model="nameFilter"><button id="nameFilterButton" style="outline:black; outline-width: 1px; outline-style: solid; width: 27px; height: 27px; background-color: white; border: none" v-on:click="filter()"><img style="max-width: 15px" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg"/></button></th>
+            <th scope="col">Name&nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name" v-model="nameFilter"><button id="nameFilterButton" style="outline:black; outline-width: 1px; outline-style: solid; width: 27px; height: 27px; background-color: white; border: none" v-on:click="filter()"><img style="max-width: 15px" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="zoom"/></button></th>
             <th scope="col">Alkohol indhold</th>
             <th scope="col">Volumen</th>
             <th scope="col">Ingredients</th>
