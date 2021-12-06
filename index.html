@@ -53,7 +53,7 @@
       <button id="AddButton" v-on:click="addDrinker()" class="btn btn-primary">Add new name</button>
     </div>
     <div v-else class="wrapper">
-      <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Måling</button>
+      <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Measure</button>
       <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
     <div v-else>ingen målinger</div> -->
       <div></div>
@@ -137,11 +137,11 @@
               <td><span>Max promille</span></td>
             </tr>
             <tr>
-              <td><input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt" v-model="weight"
+              <td><input type="number" class="number" step="any" id="weightField" placeholder="Body weight" v-model="weight"
                 required></td>
-              <td><input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille"
+              <td><input type="number" class="number" step="any" id="currentBacField" placeholder="Current promille"
                 v-model="currentBAC" required></td>
-              <td><input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille"
+              <td><input type="number" class="number" step="any" id="maxBacField" placeholder="Max promille"
                 v-model="maxBAC" required>&nbsp;</td>
             </tr>
           </table>
