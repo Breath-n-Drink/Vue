@@ -12,7 +12,13 @@ h5 {
   margin-top: 20px;
 }
 
-#hejId {
+#promilleSkala {
+  height: 40%;
+  width: 20%;
+  position:absolute; top:2%; right:5%;
+}
+
+#logoId {
   position:fixed; top:0; left:0;
 }
 
