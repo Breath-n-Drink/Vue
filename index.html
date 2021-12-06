@@ -28,10 +28,10 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Are you 18?</h5>
+          <h5 class="modal-title">Are you 18 years old</h5>
         </div>
         <div id="verify" class="collapse">
-          <b id="ageAlert">You need to be 18 to use this app!!!</b>
+          <b id="ageAlert">You have to be 18 years old!!!</b>
         </div>
         <div id="verificationBody" class="modal-body">
           <button id="yesButton" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
@@ -53,7 +53,7 @@
       <button id="AddButton" v-on:click="addDrinker()" class="btn btn-primary">Add new name</button>
     </div>
     <div v-else class="wrapper">
-      <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Måling</button>
+      <button id="GetAlchoholLevelButton" v-on:click="getAlchoholLevel()" class="btn btn-primary">Measure</button>
       <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
     <div v-else>ingen målinger</div> -->
       <div></div>
@@ -86,7 +86,7 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille" class="number">{{ currentBAC }}</div>
+              <div id="Promille2" class="number">{{ currentBAC }}</div>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille" class="number">{{ currentBAC }}</div>
+              <div id="Promille3" class="number">{{ currentBAC }}</div>
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille" class="number">{{ currentBAC }}</div>
+              <div id="Promille4" class="number">{{ currentBAC }}</div>
             </div>
           </div>
         </div>
@@ -133,17 +133,17 @@
           <h5>Info</h5>
           <table>
             <tr>
-              <td><span>Kropsvægt</span></td>
-              <td><span>Nuværende promille</span></td>
-              <td><span>Max ønskede promille</span></td>
+              <td><span>Body weight</span></td>
+              <td><span>Current promille</span></td>
+              <td><span>Max promille</span></td>
             </tr>
             <tr>
-              <td><input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt"
-                  v-model="weight" required></td>
-              <td><input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille"
-                  v-model="currentBAC" required></td>
-              <td><input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille"
-                  v-model="maxBAC" required>&nbsp;</td>
+              <td><input type="number" class="number" step="any" id="weightField" placeholder="Body weight" v-model="weight"
+                required></td>
+              <td><input type="number" class="number" step="any" id="currentBacField" placeholder="Current promille"
+                v-model="currentBAC" required></td>
+              <td><input type="number" class="number" step="any" id="maxBacField" placeholder="Max promille"
+                v-model="maxBAC" required>&nbsp;</td>
             </tr>
           </table>
           <br>
@@ -179,7 +179,7 @@
 
           </div>
           <div class="alcFilter" style="display: flex;">
-            <h5>Alkohol procent</h5>
+            <h5>Alcohol %</h5>
 
             <input type="range" v-model="filterAlcPer[0]" class="custom-range" min="0" max="100" value="0"
               id="alkoFilter1" oninput="this.nextElementSibling.value = 'Minimum: ' + this.value + '%'">
@@ -192,29 +192,22 @@
           <button class="btn btn-danger" v-on:click="resetFilters()" onclick="resetFilters()">Reset</button>
         </div>
         <br>
-        <button v-on:click="filter()" class="btn btn-primary" id="recommendButton">Foreslå
-          opskrifter</button>
+        <button v-on:click="filter()" class="btn btn-primary" id="recommendButton">Recommend recipes</button>
 
 
-        <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
+        <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Show all recipes</button>
+        <button id="randomDrinkButton" v-if="drinks.length != 0" v-on:click="getRandomDrink()" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#myModal">Get random recipe</button>
       </div>
       <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col">Billede</th>
-            <th scope="col">Name&nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name"
-                v-model="nameFilter"><button id="nameFilterButton"
-                style="outline:black; outline-width: 1px; outline-style: solid; width: 27px; height: 27px; background-color: white; border: none"
-                v-on:click="filter()"><img style="max-width: 15px"
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" /></button></th>
-            <th scope="col">Alkohol indhold</th>
-            <th scope="col">Volumen</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Name&nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name" v-model="nameFilter"><button id="nameFilterButton" style="outline:black; outline-width: 1px; outline-style: solid; width: 27px; height: 27px; background-color: white; border: none" v-on:click="filter()"><img style="max-width: 15px" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="zoom"/></button></th>
+            <th scope="col">Alcohol by volume</th>
+            <th scope="col">Volume</th>
             <th scope="col">Ingredients</th>
-            <th scope="col">PromilleChange</th>
-            <th scope="col">Rating<button id="sortByRatingBtn0" class="btn" v-if="sortByRating==0"
-                v-on:click="sortByRating = 1; filter()">⮃</button><button id="sortByRatingBtn1" class="btn"
-                v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">↑</button><button id="sortByRatingBtn2"
-                class="btn" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">↓</button></th>
+            <th scope="col">Promille Change</th>
+            <th scope="col">Rating<button id="sortByRatingBtn0" class="btn" v-if="sortByRating==0" v-on:click="sortByRating = 1; filter()">⮃</button><button id="sortByRatingBtn1" class="btn" v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">↑</button><button id="sortByRatingBtn2" class="btn" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">↓</button></th>
           </tr>
         </thead>
         <tbody>
@@ -255,7 +248,7 @@
           <!-- Modal body -->
           <div class="modal-body">
             <img v-bind:src="modalDrink.imgThumbUrl" alt="ThumbImg" width="70" height="100"><br>
-            <p id="AlcoholPercentage">Alkohol {{Math.round(modalDrink.alcoholPercentage * 100)}}%</p> <br>
+            <p id="AlcoholPercentage">Alcohol {{Math.round(modalDrink.alcoholPercentage * 100)}}%</p> <br>
             {{modalDrink.instructions}}<br><br>
 
             <div class="row">
