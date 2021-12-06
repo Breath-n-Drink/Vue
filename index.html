@@ -189,7 +189,7 @@
               id="alkoFilter2" oninput="this.nextElementSibling.value = 'Maximum: ' + this.value  + '%'">
             <output name="rangeOutput">Maximum: 100%</output>
           </div>
-          <button class="btn btn-danger" v-on:click="resetFilters()" onclick="resetFilters()">Reset</button>
+          <button id="resetButton" class="btn btn-danger" v-on:click="resetFilters()" onclick="resetFilters()">Reset</button>
         </div>
         <br>
         <button v-on:click="filter()" class="btn btn-primary" id="recommendButton">Recommend recipes</button>
