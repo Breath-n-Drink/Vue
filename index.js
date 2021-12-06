@@ -230,6 +230,10 @@ Vue.createApp({
       this.notFilterArray = []
       this.filterAlcPer[0] = 0
       this.filterAlcPer[1] = 100
+    },
+    getRandomDrink(){
+      this.modalDrink = this.drinks[Math.floor(Math.random() * this.drinks.length)]
+      console.log("Modal Drink: " + this.modalDrink)
     }
   },
 }).mount("#app");

@@ -195,6 +195,7 @@
 
 
         <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Vis alle opskrifter</button>
+        <button id="randomDrinkButton" v-if="drinks.length != 0" v-on:click="getRandomDrink()" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#myModal">Tilfældig Opskrift</button>
       </div>
       <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
         <thead>
