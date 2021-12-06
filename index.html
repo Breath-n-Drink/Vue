@@ -59,7 +59,7 @@
       <div></div>
 
       <div class="gauge-wrapper">
-        <div v-if="currentBAC < 1">
+        <div v-if="currentBAC < 0.7">
           <div class="gauge four rischio1">
             <div class="slice-colors">
               <div class="st slice-item"></div>
@@ -70,12 +70,12 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille" class="number">{{ currentBAC }}</div>
+              <div id="Promille" class="number">{{ currentBAC }}‰</div>
             </div>
           </div>
         </div>
 
-        <div v-if="currentBAC < 2 && currentBAC >= 1">
+        <div v-if="currentBAC < 1.4 && currentBAC >= 0.7">
           <div class="gauge four rischio2">
             <div class="slice-colors">
               <div class="st slice-item"></div>
@@ -86,12 +86,12 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille2" class="number">{{ currentBAC }}</div>
+              <div id="Promille2" class="number">{{ currentBAC }}‰</div>
             </div>
           </div>
         </div>
 
-        <div v-if="currentBAC >= 2 && currentBAC < 3">
+        <div v-if="currentBAC >= 1.4 && currentBAC < 2.9">
           <div class="gauge four rischio3">
             <div class="slice-colors">
               <div class="st slice-item"></div>
@@ -102,12 +102,12 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille3" class="number">{{ currentBAC }}</div>
+              <div id="Promille3" class="number">{{ currentBAC }}‰</div>
             </div>
           </div>
         </div>
 
-        <div v-if="currentBAC >= 3">
+        <div v-if="currentBAC >= 2.9">
           <div class="gauge four rischio4">
             <div class="slice-colors">
               <div class="st slice-item"></div>
@@ -118,7 +118,7 @@
             <div class="needle"></div>
             <div class="gauge-center">
               <div class="label">Promille</div>
-              <div id="Promille4" class="number">{{ currentBAC }}</div>
+              <div id="Promille4" class="number">{{ currentBAC }}‰</div>
             </div>
           </div>
         </div>
