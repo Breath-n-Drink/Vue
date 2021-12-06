@@ -22,8 +22,8 @@
 
 <body>
   <a href="#">
-  <img src="/mojito-6392430_1280.jpg" alt="BreathLogo" id="hejId" height="150px" width="150px">
-</a>
+    <img src="/mojito-6392430_1280.jpg" alt="BreathLogo" id="logoId" height="150px" width="150px">
+  </a>
   <div id="myModalVerify" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -123,7 +123,9 @@
           </div>
         </div>
       </div>
+      
       <div id="hiddenStuff">
+        <img src="/21732_promille2502x2502.jpg" alt="PromilleSkala" id="promilleSkala">
         <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p>
         <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse"
           data-bs-target="#demo">Filters</button><br>
@@ -136,12 +138,12 @@
               <td><span>Max ønskede promille</span></td>
             </tr>
             <tr>
-              <td><input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt" v-model="weight"
-                required></td>
+              <td><input type="number" class="number" step="any" id="weightField" placeholder="Kropsvægt"
+                  v-model="weight" required></td>
               <td><input type="number" class="number" step="any" id="currentBacField" placeholder="Nuværende promille"
-                v-model="currentBAC" required></td>
+                  v-model="currentBAC" required></td>
               <td><input type="number" class="number" step="any" id="maxBacField" placeholder="Max ønskede promille"
-                v-model="maxBAC" required>&nbsp;</td>
+                  v-model="maxBAC" required>&nbsp;</td>
             </tr>
           </table>
           <br>
@@ -200,12 +202,19 @@
         <thead>
           <tr>
             <th scope="col">Billede</th>
-            <th scope="col">Name&nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name" v-model="nameFilter"><button id="nameFilterButton" style="outline:black; outline-width: 1px; outline-style: solid; width: 27px; height: 27px; background-color: white; border: none" v-on:click="filter()"><img style="max-width: 15px" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg"/></button></th>
+            <th scope="col">Name&nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name"
+                v-model="nameFilter"><button id="nameFilterButton"
+                style="outline:black; outline-width: 1px; outline-style: solid; width: 27px; height: 27px; background-color: white; border: none"
+                v-on:click="filter()"><img style="max-width: 15px"
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" /></button></th>
             <th scope="col">Alkohol indhold</th>
             <th scope="col">Volumen</th>
             <th scope="col">Ingredients</th>
             <th scope="col">PromilleChange</th>
-            <th scope="col">Rating<button id="sortByRatingBtn0" class="btn" v-if="sortByRating==0" v-on:click="sortByRating = 1; filter()">⮃</button><button id="sortByRatingBtn1" class="btn" v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">↑</button><button id="sortByRatingBtn2" class="btn" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">↓</button></th>
+            <th scope="col">Rating<button id="sortByRatingBtn0" class="btn" v-if="sortByRating==0"
+                v-on:click="sortByRating = 1; filter()">⮃</button><button id="sortByRatingBtn1" class="btn"
+                v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">↑</button><button id="sortByRatingBtn2"
+                class="btn" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">↓</button></th>
           </tr>
         </thead>
         <tbody>
