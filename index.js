@@ -24,7 +24,9 @@ Vue.createApp({
       sortByRating: 0,
       funnyComment: "",
       modalFavorite: false,
-      favorites: []
+      favorites: [],
+      promilles: [],
+      time: new Date()
     };
   },
   watch: {
@@ -86,13 +88,11 @@ Vue.createApp({
       this.favorites = await response.data;
       console.log(this.favorites)
       this.favorites.forEach(favorite => {
-        if (favorite.drinkId==this.modalDrink.drinkId)
-        {
-          this.modalFavorite=true
+        if (favorite.drinkId == this.modalDrink.drinkId) {
+          this.modalFavorite = true
         }
-        else
-        {
-          this.modalFavorite=false
+        else {
+          this.modalFavorite = false
         }
       })
     },
@@ -267,14 +267,30 @@ Vue.createApp({
         this.funnyComment = "ba-bu, ba-bu, ba-bu, ba-bu"
       }
     },
+    async getPromilleHistory() {
+      const url = baseUrl + `/Promille/id=` + this.userId
+      try {
+        const response = await axios.get(url)
+        this.promilles = await response.data
+        this.time = this.ParseJsonDate(this.promilles[0].time)
+        console.log("time in json: " + this.time.format('yyyy-mm-dd-hh-MM-ss'))
+      } catch (ex) {
+        alert(ex);
+      }
+    },
+    ParseJsonDate(dateString) {
+      //var milli = dateString.replace(/\/Date\((-?\d+)\)\//, '$1');
+      var date = new Date(dateString);
+      return date;
+    },
     async addFavorite() {
       const url = baseUrl + `/FavoriteDrinks?drinkId=${this.modalDrink.drinkId}&drinkerId=${this.userId}`
       try {
         const response = await axios.post(url)
       } catch (ex) {
-        
+
       }
-      this.modalFavorite=true
+      this.modalFavorite = true
     },
     async removeFavorite() {
       const url = baseUrl + `/FavoriteDrinks?drinkId=${this.modalDrink.drinkId}&drinkerId=${this.userId}`
@@ -283,7 +299,7 @@ Vue.createApp({
       } catch (ex) {
 
       }
-      this.modalFavorite=false
+      this.modalFavorite = false
     }
   },
 }).mount("#app");

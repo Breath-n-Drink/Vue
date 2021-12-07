@@ -139,7 +139,15 @@
           </div>
         </div>
       </div>
-      
+      <div>
+        <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton">Get drinking history</button>
+        <table id="promilleListId" v-if="promilles.length" class="table table-bordered">
+          <tbody v-for="promille in promilles">
+            <td>{{promille.promille1}}</td>
+            <td>{{promille.time}}</td>  
+          </tbody>
+        </table>
+      </div>
       <div id="hiddenStuff">
         <!-- <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p> -->
         <p>{{ funnyComment }}</p> 
