@@ -269,17 +269,19 @@ Vue.createApp({
       try {
         const response = await axios.get(url)
         this.promilles = await response.data
-        this.time = this.ParseJsonDate(this.promilles[0].time)
-        console.log("time in json: " + this.time.format('yyyy-mm-dd-hh-MM-ss'))
+        this.promilles.forEach(e => e.time = this.ParseJsonDate(e.time))
+        console.log("time in json: " + this.ParseJsonDate(this.promilles[0].time))
+        
       } catch (ex) {
         alert(ex);
       }
     },
-    ParseJsonDate(dateString) {
-      //var milli = dateString.replace(/\/Date\((-?\d+)\)\//, '$1');
-      var date = new Date(dateString);
-      return date;
-    },
+      ParseJsonDate(dateString) {
+        //var milli = dateString.replace(/\/Date\((-?\d+)\)\//, '$1');
+        var date = new Date(dateString);
+        
+        return date.toDateString() + " " + date.getHours() + ":" + date.getMinutes();
+      },
     async addFavorite() {
       const url = baseUrl + `/FavoriteDrinks?drinkId=${this.modalDrink.drinkId}&drinkerId=${this.userId}`
       try {
