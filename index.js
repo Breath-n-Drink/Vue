@@ -26,10 +26,14 @@ Vue.createApp({
       modalFavorite: false,
       favorites: [],
       promilles: [],
-      time: new Date()
+      time: new Date(),
+      promillePage: 1,
     };
   },
   watch: {
+    promillePage: async function () {
+      await this.getPromilleHistory()
+    },
     maxBAC: async function () {
       const options = {
         headers: {
@@ -268,10 +272,11 @@ Vue.createApp({
       }
     },
     async getPromilleHistory() {
-      const url = baseUrl + `/Promille/id=` + this.userId
+      const url = baseUrl + `/Promille/id=` + this.userId + 'page=' + this.promillePage
       try {
         const response = await axios.get(url)
         this.promilles = await response.data
+        if(this.promilles.length <= 0 ) {return}
         this.promilles.forEach(e => e.time = this.ParseJsonDate(e.time))
         console.log("time in json: " + this.ParseJsonDate(this.promilles[0].time))
         

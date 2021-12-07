@@ -140,20 +140,29 @@
         </div>
       </div>
       <div>
-        <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton">Get drinking history</button>
-        <table id="promilleListId" v-if="promilles.length" class="table table-bordered">
+        <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton"  data-bs-toggle="collapse" data-bs-target="#promilleListId">Get drinking history</button>
+        <div id="promilleListId"  class="collapse">
+        <table class="table table-bordered">
           <tbody v-for="promille in promilles">
-            <td>{{promille.promille1}}</td>
-            <td>{{promille.time}}</td>  
+            <td>{{Math.round(promille.promille1 * 100) / 100}}</td>
+            <td>{{promille.time}}</td>
+            
           </tbody>
+          
         </table>
+        <p v-if="promilles.length <= 0">No entries</p>
+        <div class="page">
+          <label class="pageLabel" for="promillePageField">Page: </label>
+          <input type="number" class="number pageNumber" step="any" id="promillePageField" placeholder="1" v-model="promillePage" required>
+        </div>
+      </div>
+        
       </div>
       <div id="hiddenStuff">
         <!-- <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p> -->
         <p>{{ funnyComment }}</p> 
         <a href="https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholens-virkninger/"><img src="/21732_promille2502x2502.jpg" alt="Sunhed.dk" id="promilleSkala"></a>
-        <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse"
-          data-bs-target="#demo">Filters</button><br>
+        <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
         <div class="filterContainer collapse" id="demo">
           <h5>Info</h5>
           <table>

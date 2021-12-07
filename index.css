@@ -208,3 +208,17 @@ h1 {text-align:center;}
 #ratingText{
   margin-bottom: auto;
 } 
+
+#promilleListId {
+  max-width: 700px;
+  margin: auto;
+}
+
+.page {
+  float: right;
+}
+
+.pageNumber {
+  width: 40px;
+  text-align: center;
+}
