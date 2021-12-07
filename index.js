@@ -53,6 +53,8 @@ Vue.createApp({
   methods: {
     async getAlcoholLevel() {
       const url = baseUrl + "/promille";
+      var x = document.getElementById("hiddenComment");
+      x.style.display = "block";
       var x = document.getElementById("hiddenStuff");
       x.style.display = "block";
       try {

@@ -8,6 +8,10 @@
     display: none;
 }
 
+#hiddenComment {
+  display: none;
+}
+
 h5 {
   margin-top: 20px;
 }
