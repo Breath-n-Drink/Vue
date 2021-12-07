@@ -199,7 +199,7 @@ Vue.createApp({
 
       try {
         const response = await axios.get(url);
-        this.drinks = await response.data; 
+        this.drinks = await response.data;
       } catch (ex) {
         /*alert(ex.message)*/
       }
@@ -217,7 +217,7 @@ Vue.createApp({
         const response = await axios.get(url);
         drinker = await response.data
       } catch (ex) {
-        
+
       }
       this.maxBAC = drinker.maxPromille
       this.userId = drinker.id
@@ -236,23 +236,29 @@ Vue.createApp({
       this.filterAlcPer[0] = 0
       this.filterAlcPer[1] = 100
     },
-    getRandomDrink(){
+    getRandomDrink() {
       this.modalDrink = this.drinks[Math.floor(Math.random() * this.drinks.length)]
     },
-    funnyCommentMethod(){
-      if(this.currentBAC < 0.7)
-      {
+    funnyCommentMethod() {
+      if (this.currentBAC < 0.7) {
         this.funnyComment = "You're fine mate, drink some more"
-      } 
-      else if (this.currentBAC >= 0.7 && this.currentBAC < 1.4)
-      {
+      }
+      else if (this.currentBAC >= 0.7 && this.currentBAC < 1.4) {
         this.funnyComment = "Continue onwards!!!"
-      } else if (this.currentBAC >= 1.4 && this.currentBAC < 2.9)
-      {
+      } else if (this.currentBAC >= 1.4 && this.currentBAC < 2.9) {
         this.funnyComment = "It's time to stop (insert man with clock meme here)"
-      } else
-      {
+      } else {
         this.funnyComment = "ba-bu, ba-bu, ba-bu, ba-bu"
+      }
+    },
+    async addFavorite() {
+      const url = baseUrl + `/FavoriteDrinks?drinkId=${this.modalDrink.id}&drinkerId=${this.userId}`
+      console.log(this.modalDrink)
+      console.log(this.userId)
+      try {
+        const response = await axios.post(url)
+      } catch (ex) {
+
       }
     }
   },
