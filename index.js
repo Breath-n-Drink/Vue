@@ -90,13 +90,10 @@ Vue.createApp({
       const url = baseUrl + `/Drinks/Favorites?drinkerId=${this.userId}`
       const response = await axios.get(url)
       this.favorites = await response.data;
-      console.log(this.favorites)
+      this.modalFavorite = false
       this.favorites.forEach(favorite => {
         if (favorite.drinkId == this.modalDrink.drinkId) {
           this.modalFavorite = true
-        }
-        else {
-          this.modalFavorite = false
         }
       })
     },
@@ -307,6 +304,14 @@ Vue.createApp({
 
       }
       this.modalFavorite = false
+    },
+    async favoritesList() {
+      const url = baseUrl + `/Drinks/Favorites?drinkerId=${this.userId}`
+      try {
+        const response = await axios.get(url)
+        this.drinks = response.data
+      } catch (ex) {
+      }
     }
   },
 }).mount("#app");

@@ -68,8 +68,7 @@
       <button id="AddButton" v-on:click="addDrinker()" class="btn btn-primary">Add new name</button>
     </div>
     <div v-else class="wrapper">
-      <button id="GetAlchoholLevelButton" v-on:click="showMeasurementModal()" class="btn btn-primary">Start
-        måling</button>
+      <button id="GetAlchoholLevelButton" v-on:click="showMeasurementModal()" class="btn btn-primary">Measurement</button>
       <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
       <div v-else>ingen målinger</div> -->
       <div></div>
@@ -231,6 +230,7 @@
 
         <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Show all recipes</button>
         <button id="randomDrinkButton" v-if="drinks.length != 0" v-on:click="getRandomDrink()" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#myModal">Random recipe</button>
+        <button v-on:click="favoritesList()" class="btn btn-primary" id="favoriteButton">Favorite recipes</button>
       </div>
       <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
         <thead>
