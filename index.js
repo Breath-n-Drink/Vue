@@ -22,7 +22,9 @@ Vue.createApp({
       userId: 0,
       loggedIn: false,
       sortByRating: 0,
-      funnyComment: ""
+      funnyComment: "",
+      promilles: [],
+      time: new Date()
     };
   },
   watch: {
@@ -254,6 +256,22 @@ Vue.createApp({
       {
         this.funnyComment = "ba-bu, ba-bu, ba-bu, ba-bu"
       }
+    },
+    async getPromilleHistory(){
+      const url = baseUrl + `/Promille/id=` + this.userId
+      try {
+        const response = await axios.get(url)
+        this.promilles = await response.data
+        this.time = this.ParseJsonDate(this.promilles[0].time)
+        console.log("time in json: " + this.time.format('yyyy-mm-dd-hh-MM-ss'))
+      } catch (ex) {
+        alert(ex);
+      }
+    },
+      ParseJsonDate(dateString) {
+        //var milli = dateString.replace(/\/Date\((-?\d+)\)\//, '$1');
+        var date = new Date(dateString);
+        return date;
     }
   },
 }).mount("#app");
