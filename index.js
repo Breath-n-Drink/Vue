@@ -22,7 +22,9 @@ Vue.createApp({
       userId: 0,
       loggedIn: false,
       sortByRating: 0,
-      funnyComment: ""
+      funnyComment: "",
+      modalFavorite: false,
+      favorites: []
     };
   },
   watch: {
@@ -77,8 +79,22 @@ Vue.createApp({
         // alert(this.modalDrink.drinkId);
       }
     },
-    adjustModal(drink) {
+    async adjustModal(drink) {
       this.modalDrink = drink;
+      const url = baseUrl + `/Drinks/Favorites?drinkerId=${this.userId}`
+      const response = await axios.get(url)
+      this.favorites = await response.data;
+      console.log(this.favorites)
+      this.favorites.forEach(favorite => {
+        if (favorite.drinkId==this.modalDrink.drinkId)
+        {
+          this.modalFavorite=true
+        }
+        else
+        {
+          this.modalFavorite=false
+        }
+      })
     },
     async getDrinksByPromille(weight, currentBac, maxBac, gender = 0) {
 
@@ -252,14 +268,22 @@ Vue.createApp({
       }
     },
     async addFavorite() {
-      const url = baseUrl + `/FavoriteDrinks?drinkId=${this.modalDrink.id}&drinkerId=${this.userId}`
-      console.log(this.modalDrink)
-      console.log(this.userId)
+      const url = baseUrl + `/FavoriteDrinks?drinkId=${this.modalDrink.drinkId}&drinkerId=${this.userId}`
       try {
         const response = await axios.post(url)
       } catch (ex) {
+        
+      }
+      this.modalFavorite=true
+    },
+    async removeFavorite() {
+      const url = baseUrl + `/FavoriteDrinks?drinkId=${this.modalDrink.drinkId}&drinkerId=${this.userId}`
+      try {
+        const response = await axios.delete(url)
+      } catch (ex) {
 
       }
+      this.modalFavorite=false
     }
   },
 }).mount("#app");
