@@ -21,8 +21,28 @@
 </head>
 
 <body>
+  <nav class ="navbar">
+    <div class= "centered">
+        <div class="header-text">
+          <img src="/cocktail.png" alt="BreathLogo" id="logoId" height="50px" width="50px">
+            <a>BreathNDrink</a>
+        </div>
+        <div class="header-menu">
+            <ul class="simple-nav">
+                <li><a href="#" class="menu-btn">Home</a></li>
+                <li><a href="#alcohol" class="menu-btn">Alcohol</a></li>
+            </ul>
+            <div class="burger-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</nav>
   <a href="#">
-    <img src="/mojito-6392430_1280.jpg" alt="BreathLogo" id="logoId" height="150px" width="150px">
+    
   </a>
   <div id="myModalVerify" class="modal fade">
     <div class="modal-dialog">
@@ -41,6 +61,7 @@
     </div>
   </div>
   <div id="app" class="container-fluid">
+    <section id="home" class="home">
     <div id="myModalMeasurement" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -139,7 +160,7 @@
         </div>
       </div>
       <div id="hiddenComment"><p>{{ funnyComment }}</p> </div>
-      <div>
+      <div class="promilleHistory">
         <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton"  data-bs-toggle="collapse" data-bs-target="#promilleListId">Get drinking history</button>
         <div id="promilleListId"  class="collapse">
         <table class="table table-bordered">
@@ -234,6 +255,8 @@
         <button id="randomDrinkButton" v-if="drinks.length != 0" v-on:click="getRandomDrink()" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#myModal">Random recipe</button>
         <button v-on:click="favoritesList()" class="btn btn-primary" id="favoriteButton">Favorite recipes</button>
       </div>
+    </section>
+    <section id="alcohol" class="alcohol">
       <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
         <thead>
           <tr>
@@ -264,7 +287,8 @@
         </tbody>
       </table>
       <h5 v-else id="hidden-message">{{filterMessage}}</h5>
-    </div>
+    </section>
+  
     <!-- Button to Open the Modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Open modal
@@ -342,6 +366,7 @@
     }
   </script>
   <script src="index.js"></script>
+  <script src="Jquery.js"></script>
 </body>
 
 </html>

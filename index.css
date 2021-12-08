@@ -1,8 +1,85 @@
 #app {
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    max-width: 75%;
 }
+
+a {
+  text-decoration: none;
+  }
+
+.home {
+  margin-top: 25vh;
+}
+
+.alcohol {
+  margin-top: 12vh
+}
+
+#promilleListId {
+  margin-bottom: 50px;
+}
+
+  .navbar {
+    
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 30px 0;
+    transition: all 0.3s ease;
+    top: 0px;
+    left: opx;
+  }
+  
+  .navbar .centered {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60vw;
+  }
+  
+  .sticky {
+    background-color: rgb(14, 211, 138);
+    padding: 15px 0;
+  }
+  
+  .centered {
+  
+    padding: 0 80px;
+    max-width: 1300px;
+    margin:auto;
+  }
+  
+  .header-text {
+    font-size: 35px;
+    font-weight: 600;
+    color: #fff;
+  
+  }
+  
+  #header-menu {
+  
+  }
+  
+.simple-nav {
+  margin-top: 15px;
+}
+
+  .simple-nav li {
+    list-style: none;
+    display: inline-block;
+
+  }
+  
+  .simple-nav li a {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+  }
+  
+   
 
 #hiddenStuff {
     display: none;
@@ -23,7 +100,8 @@ h5 {
 }
 
 #logoId {
-  position:fixed; top:0; left:0;
+  margin-top: -15px;
+  margin-right: -20px;
 }
 
 .login {
@@ -37,7 +115,7 @@ h5 {
     cursor: pointer;
 }
 
-body {height: 100vh; font-family: Arial; text-align:center; font-family: Arial, Helvetica, sans-serif;}
+
 h1 {text-align:center;}
 
 .gauge-wrapper {
@@ -162,6 +240,10 @@ h1 {text-align:center;}
     width:100%;
     max-width: 700px;
     margin: auto;
+    border: 5px;
+border-radius: 14px;
+padding: 5px;
+background-color: #bbbbbb;
 }
 
 .alcFilter {
