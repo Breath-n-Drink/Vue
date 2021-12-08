@@ -37,6 +37,7 @@
             <ul class="simple-nav">
                 <li><a href="#" class="menu-btn">Home</a></li>
                 <li><a href="#alcohol" class="menu-btn">Alcohol</a></li>
+                <li><a id="darkButton" onclick="myFunction()">Toggle dark mode</a></li>
             </ul>
             <div class="burger-nav">
                 <span></span>
@@ -50,7 +51,7 @@
   <a href="#">
     
   </a>
-  <button id="darkButton" onclick="myFunction()">Toggle dark mode</button>
+  <button id="darkButton" onclick="myFunction()">Toggle dark/White mode</button>
   <div id="myModalVerify" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -170,7 +171,7 @@
       <div class="promilleHistory">
         <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton"  data-bs-toggle="collapse" data-bs-target="#promilleListId">Get drinking history</button>
         <div id="promilleListId"  class="collapse">
-        <table class="table table-bordered">
+        <table id="promilleHistoryTable" class="table table-bordered">
           <tbody v-for="promille in promilles">
             <td>{{Math.round(promille.promille1 * 100) / 100}}</td>
             <td>{{promille.time}}</td>
