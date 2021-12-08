@@ -149,7 +149,7 @@
       <div>
         <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton"  data-bs-toggle="collapse" data-bs-target="#promilleListId">Get drinking history</button>
         <div id="promilleListId"  class="collapse">
-        <table class="table table-bordered">
+        <table id="promilleHistoryTable" class="table table-bordered">
           <tbody v-for="promille in promilles">
             <td>{{Math.round(promille.promille1 * 100) / 100}}</td>
             <td>{{promille.time}}</td>
