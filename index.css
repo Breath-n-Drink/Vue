@@ -96,6 +96,10 @@ body {
 
 }
 
+#promilleHistoryTable {
+  color: var(--color-primary);
+}
+
 .modal-content {
   background-color: var(--color-secondary) !important;
   color: var(--color-primary);
