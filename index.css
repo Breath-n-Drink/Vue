@@ -80,6 +80,30 @@ a {
   }
   
    
+body {
+  background-color: white;
+  color:#212529;
+  --color-secondary: white;
+  --color-primary: #212529;
+}
+
+.dark-mode {
+  background-color: #212529;
+  color: white;
+  --color-secondary: #212529;
+  --color-primary: white;
+
+}
+
+.modal-content {
+  background-color: var(--color-secondary) !important;
+  color: var(--color-primary);
+}
+
+#DrinkList {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
 
 #hiddenStuff {
     display: none;
