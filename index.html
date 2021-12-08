@@ -181,7 +181,7 @@
         <p v-if="promilles.length <= 0">No entries</p>
         <div class="page">
           <label class="pageLabel" for="promillePageField">Page: </label>
-          <input type="number" class="number pageNumber" step="any" id="promillePageField" placeholder="1" v-model="promillePage" required>
+          <input type="number" class="number pageNumber" min="1" step="any" id="promillePageField" placeholder="1" v-model="promillePage" required>
         </div>
       </div>
         
