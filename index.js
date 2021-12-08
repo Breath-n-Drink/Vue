@@ -255,8 +255,17 @@ Vue.createApp({
       this.filterAlcPer[0] = 0
       this.filterAlcPer[1] = 100
     },
-    getRandomDrink() {
+    async getRandomDrink() {
       this.modalDrink = this.drinks[Math.floor(Math.random() * this.drinks.length)]
+      const url = baseUrl + `/Drinks/Favorites?drinkerId=${this.userId}`
+      const response = await axios.get(url)
+      this.favorites = await response.data;
+      this.modalFavorite = false
+      this.favorites.forEach(favorite => {
+        if (favorite.drinkId == this.modalDrink.drinkId) {
+          this.modalFavorite = true
+        }
+      })
     },
     funnyCommentMethod() {
       if (this.currentBAC < 0.7) {
