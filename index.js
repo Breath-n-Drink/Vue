@@ -122,7 +122,7 @@ Vue.createApp({
       if (pct == -1.0) {
         return "NA";
       } else {
-        return Math.round(pct * 100) + " %";
+        return Math.round(pct * 100) + "%";
       }
     },
     calculateVol(vol) {

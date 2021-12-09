@@ -265,36 +265,24 @@
       </div>
     </section>
     <section id="alcohol" class="alcohol">
-      <table id="DrinkList" v-if="drinks.length" class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Picture</th>
-            <th scope="col">Name&nbsp;<input id="nameFilterField" type="text" class="text" placeholder="Search by name" v-model="nameFilter"><button id="nameFilterButton" style="outline:black; outline-width: 1px; outline-style: solid; width: 27px; height: 27px; background-color: white; border: none" v-on:click="filter()"><img style="max-width: 15px" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="zoom"/></button></th>
-            <th scope="col">Alcohol by volume</th>
-            <th scope="col">Volume</th>
-            <th scope="col">Ingredients</th>
-            <th scope="col">Promille Change</th>
-            <th scope="col">Rating<button id="sortByRatingBtn0" class="btn" v-if="sortByRating==0" v-on:click="sortByRating = 1; filter()">⮃</button><button id="sortByRatingBtn1" class="btn" v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">↑</button><button id="sortByRatingBtn2" class="btn" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">↓</button></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr scope="row" class="drink" data-bs-toggle="modal" data-bs-target="#myModal" v-for="drink in drinks"
-            v-on:click="adjustModal(drink)">
-            <td><img v-bind:src="drink.imgThumbUrl" alt="ThumbImg" width="70" height="100"></td>
-            <td>{{drink.name}}</td>
-            <td>{{calculatePct(drink.alcoholPercentage)}}</td>
-            <td>{{calculateVol(drink.totalVolume)}}</td>
-            <td>
-              <p v-for="ingredient in drink.ingredientList">
-                {{ingredient}}
-              </p>
-            </td>
-            <td>+ {{projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight, gender)}}</td>
-            <td>{{drink.rating.toFixed(1)}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="centered">
+      <div class="alcoholHero">
+        <div class="card" v-for="drink in drinks" v-on:click="adjustModal(drink)" data-bs-toggle="modal" data-bs-target="#myModal">
+          <img class="card-img-top" v-bind:src="drink.imgThumbUrl" alt="Card image cap">
+          <div class="card-title">
+            <h5>{{drink.name}}</h5>
+          </div>
+          <div class="card-body">
+            <div class="card-item red">+{{projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight, gender)}}‰</div>
+            <div class="card-item red">{{calculatePct(drink.alcoholPercentage)}}</div>
+            <div class="card-item red">{{calculateVol(drink.totalVolume)}}</div>
+            <div class="card-item" v-for="ingredient in drink.ingredientList">{{ingredient}}</div>
+          </div>
+        </div>
+      </div>
+
       <h5 v-else id="hidden-message">{{filterMessage}}</h5>
+    </div>
     </section>
   
     <!-- Button to Open the Modal -->
@@ -321,7 +309,7 @@
 
             <div class="row">
               <div id="Ingredients" class="col-sm-6"><b>Ingredients</b>
-                <p v-for="ingredient in modalDrink.ingredientList">
+                <p v-for="ingredient in modalDrink.ingredientList" v-if="ingredient">
                   {{ingredient}}
                 </p>
               </div>
