@@ -258,6 +258,12 @@ h1 {text-align:center;}
     justify-content: center;
 }
 
+#inputName {
+  width: 50% !important;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
 .form-check-input{
     margin-left: 1.9em !important;
 }
@@ -333,4 +339,26 @@ background-color: #bbbbbb;
 .pageNumber {
   width: 40px;
   text-align: center;
+}
+
+@media screen and (max-width: 1350px) {
+  .centered {
+    width: 80vw !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .centered {
+    width: 100vw !important;
+  }
+
+  .header-text {
+    font-size: 1.3rem;
+  }
+
+  #logoId {
+    height: 30px;
+    width: 30px;
+    margin-right: -12px
+  }
 }
