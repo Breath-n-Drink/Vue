@@ -11,6 +11,8 @@ a {
   margin-top: 25vh;
 }
 
+
+
 .alcohol {
   margin-top: 12vh
 }
@@ -52,17 +54,12 @@ a {
   .header-text {
     font-size: 35px;
     font-weight: 600;
-    color: #fff;
-  
+    color: var(--color-primary);
   }
   
-  #header-menu {
-  
-  }
-  
+
 .simple-nav {
   margin-top: 15px;
-
 }
 
   .simple-nav li {
