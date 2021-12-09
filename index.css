@@ -344,7 +344,7 @@ background-color: #bbbbbb;
   text-align: center;
 }
 
-@media screen and (max-width: 1350px) {
+ @media screen and (max-width: 1350px) {
   .centered {
     width: 80vw !important;
   }
@@ -353,7 +353,7 @@ background-color: #bbbbbb;
 @media screen and (max-width: 1000px) {
   .centered {
     width: 100vw !important;
-  }
+  } 
 
   .header-text {
     font-size: 1.3rem;
@@ -364,4 +364,31 @@ background-color: #bbbbbb;
     width: 30px;
     margin-right: -12px
   }
+
+   /* .header-menu .icon {
+    display: none;
+    color: violet;
+  }
+
+  @media screen and (max-width: 600px) {
+    .header-menu a:not(:first-child) {display: none;}
+    .header-menu a.icon {
+      float: right;
+      display: block;
+    }
+  } 
+  
+   @media screen and (max-width: 600px) {
+    .header-menu.responsive {position: relative;}
+    .header-menu.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .header-menu.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }  */
 }

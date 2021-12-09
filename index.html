@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
     $(document).ready(function () {
       $("#myModalVerify").modal({ backdrop: "static" });
@@ -27,7 +28,7 @@
 </head>
 
 <body>
-  <nav class ="navbar">
+ <div class ="navbar">
     <div class= "centered">
         <div class="header-text">
           <a href="#">
@@ -35,12 +36,15 @@
           </a>
             <a>BreathNDrink</a>
         </div>
-        <div class="header-menu">
-            <ul class="simple-nav">
+        <div class="header-menu" id="navbar">
+            <ul class="simple-nav" >
                 <li><a href="#" class="menu-btn">Home</a></li>
                 <li><a href="#alcohol" class="menu-btn">Alcohol</a></li>
                 <li><a id="darkButton" onclick="myFunction()">Light/Dark</a></li>
                 <li><a id="promilleGuideButton" data-bs-toggle="modal" data-bs-target="#pictureModal">Promille Guide</a></li>
+                <!-- <a href="javascript:void(0);" class="icon" onclick="closeFunction()">
+                  <i class="fa fa-bars"></i>
+                </a> -->
             </ul>
             <div class="burger-nav">
                 <span></span>
@@ -50,7 +54,7 @@
             </div>
         </div>
     </div>
-</nav>
+ </div>
   <div id="myModalVerify" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -400,6 +404,16 @@
       range[1].value = "Maximum: 100%"
     }
   </script>
+  <!-- <script>
+    function closeFunction() {
+      var x = document.getElementById("navbar");
+      if (x.className === "header-menu") {
+        x.className += " responsive";
+      } else {
+        x.className = "header-menu";
+      }
+    } -->
+    </script>
   <script src="index.js"></script>
   <script src="Jquery.js"></script>
 </body>
