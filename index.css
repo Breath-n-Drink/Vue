@@ -57,6 +57,10 @@ a {
     color: var(--color-primary);
   }
   
+  #demo {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
 
 .simple-nav {
   margin-top: 15px;
