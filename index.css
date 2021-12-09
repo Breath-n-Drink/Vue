@@ -124,12 +124,8 @@ h5 {
 }
 
 #promilleSkala {
-  /* height: 40%;
-  width: 20%; */
   width: 100%;
-  max-width: 400px;
   height: auto;
-  /* position:absolute; top:2%; right:5%; */
 }
 
 #logoId {

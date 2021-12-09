@@ -40,7 +40,7 @@
                 <li><a href="#" class="menu-btn">Home</a></li>
                 <li><a href="#alcohol" class="menu-btn">Alcohol</a></li>
                 <li><a id="darkButton" onclick="myFunction()">Light/Dark</a></li>
-                <li><a href="https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholens-virkninger/">Promille Guide</a></li>
+                <li><a id="promilleGuideButton" data-bs-toggle="modal" data-bs-target="#pictureModal">Promille Guide</a></li>
             </ul>
             <div class="burger-nav">
                 <span></span>
@@ -190,7 +190,7 @@
         <br>
         <!-- <p>Den virker ved at du trykke på joysticket på raspberry pi'en og så får du en promille.</p> -->
         
-        <a href="https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholens-virkninger/"><img src="/21732_promille2502x2502.jpg" alt="Sunhed.dk" id="promilleSkala"></a>
+        <!-- <a href="https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholens-virkninger/"><img src="/21732_promille2502x2502.jpg" alt="Sunhed.dk" id="promilleSkala"></a> -->
         <div></div>
         <button id="filterButton" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Filters</button><br>
         <div class="filterContainer collapse" id="demo">
@@ -359,9 +359,36 @@
         </div>
       </div>
     </div>
-
-
   </div>
+
+    <!--billede Modal -->
+    <div class="modal" id="pictureModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 id="ModalPromilleName" class="modal-title">Promille Guide</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <a href="https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholens-virkninger/"><img src="/21732_promille2502x2502.jpg" alt="Sunhed.dk" id="promilleSkala" width="auto" height="auto"></a>
+            <!-- <img  alt="ThumbImg" width="70" height="100"><br> -->
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button id="modalCloseButton" type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
   <script>
     var checkBoxes = document.getElementsByClassName("form-check-input")
     var range = document.getElementsByName("rangeOutput")
