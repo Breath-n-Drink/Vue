@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://unpkg.com/vue@next"></script>
@@ -277,7 +278,7 @@
             <div class="card-item red">{{calculatePct(drink.alcoholPercentage)}}</div>
             <div class="card-item red">{{calculateVol(drink.totalVolume)}}</div>
             <div class="card-item" v-for="ingredient in drink.ingredientList">{{ingredient}}</div>
-            <div class="card-rating"><i v-for="" class="fas fa-star"></i></div>
+            <div class="card-rating"><i v-for="rating in drink.rating.toFixed(1)" class="fas fa-star"></i></div>
             
           </div>
         </div>
