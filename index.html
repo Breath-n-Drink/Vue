@@ -272,7 +272,7 @@
           <div class="sortItem"><i class="fas fa-font"></i> Name</div>
           <div class="sortItem"><i class="fas fa-tint"></i> mL</div>
           <div class="sortItem"><i class="fas fa-wine-bottle"></i> Projected Promille</div>
-          <div class="sortItem"><i class="fas fa-star"></i> Rating</div>
+          <div class="sortItem"><i class="fas fa-star"></i> <button class="btn" id="sortByRatingBtn0" v-if="sortByRating==0" v-on:click="sortByRating = 1; filter()">Rating ⮃</button><button id="sortByRatingBtn1" v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">Rating ↑</button><button id="sortByRatingBtn2" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">Rating ↓</button></div>
         </div>
         <div class="alcoholHero">
           <div class="card" v-for="drink in drinks" v-on:click="adjustModal(drink)" data-bs-toggle="modal" data-bs-target="#myModal">

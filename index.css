@@ -176,7 +176,19 @@ h5 {
 
 .sortItem {
   margin: 5px 10px;
+  color: var(--color-simple)
+}
+
+.sortItem button {
+  background-color: transparent;
+  border: 1px solid transparent;
   color: var(--color-simple);
+  padding: 0px;
+}
+
+.sortItem button:hover {
+  color: var(--color-primary);
+  cursor: pointer;
 }
 
 .sortItem:hover {
