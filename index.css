@@ -327,7 +327,7 @@ h1 {
 }
 /* rating */
 * {
-  margin: 0;
+  margin: auto;
   padding: 0;
 }
 .rate {
@@ -403,6 +403,14 @@ h1 {
     width: 30px;
     margin-right: -12px;
   }
+}
+
+#verificationBody {
+  margin: auto;
+}
+
+#ageText {
+  margin: auto;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
