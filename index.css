@@ -14,7 +14,7 @@ a {
 
 
 .alcohol {
-  margin-top: 12vh;
+
 }
 
 #promilleListId {
@@ -137,6 +137,29 @@ h5 {
 .login {
   width: 50%;
   margin: auto;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(24, 24, 24);
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: solid rgb(85, 85, 85) 2px;
+
+}
+
+.actionsItem {
+  margin: 5px 10px;
+  color: var(--color-simple);
+  font-size: 1.3rem;
+}
+
+.actionsItem:hover {
+  color: var(--color-primary);
+  cursor: pointer;
 }
 
 .sort {

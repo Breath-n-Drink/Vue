@@ -98,7 +98,7 @@
       <button id="SubmitButton" v-on:click="getDrinker()" class="btn btn-primary">Submit</button>
       <button id="AddButton" v-on:click="addDrinker()" class="btn btn-primary">Add new name</button>
     </div>
-    <div v-else class="wrapper">
+    <div v-else class="centered">
       <button id="GetAlchoholLevelButton" v-on:click="showMeasurementModal()" class="btn btn-primary">Measurement</button>
       <!-- <div id="Promille" v-if="currentBAC"> {{ currentBAC }} </div>
       <div v-else>ingen målinger</div> -->
@@ -258,12 +258,12 @@
           <button id="resetButton" class="btn btn-danger" v-on:click="resetFilters()" onclick="resetFilters()">Reset</button>
         </div>
         <br>
-        <button v-on:click="filter()" class="btn btn-primary" id="recommendButton">Recommend recipes</button>
-
-
-        <button id="showAllButton" v-on:click="getDrinks()" class="btn btn-primary">Show all recipes</button>
-        <button id="randomDrinkButton" v-if="drinks.length != 0" v-on:click="getRandomDrink()" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#myModal">Random recipe</button>
-        <button v-on:click="favoritesList()" class="btn btn-primary" id="favoriteButton">Favorite recipes</button>
+        <div class="actions">
+          <div v-on:click="filter()" class="actionsItem" id="recommendButton">Recommend recipes</div>
+          <div id="showAllButton" v-on:click="getDrinks()" class="actionsItem">Show all recipes</div>
+          <div id="randomDrinkButton" v-if="drinks.length != 0" v-on:click="getRandomDrink()" class="actionsItem" data-bs-toggle="modal" data-bs-target="#myModal">Random recipe</div>
+          <div v-on:click="favoritesList()" class="actionsItem" id="favoriteButton">Favorite recipes</div>
+        </div>
       </div>
     </section>
     <section id="alcohol" class="alcohol">
@@ -281,8 +281,8 @@
               <h5>{{drink.name}}</h5>
             </div>
             <div class="card-body">
-              <div class="card-item red">+{{projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight, gender)}}‰</div>
-              <div class="card-item red">{{calculatePct(drink.alcoholPercentage)}}</div>
+              <div v-if="projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight, gender) != Infinity" class="card-item red">+{{projectedPromille(drink.totalVolume, drink.alcoholPercentage, weight, gender)}}‰</div>
+              <div class="card-item red">{{calculatePct(drink.alcoholPercentage)}} Alcohol</div>
               <div class="card-item red">{{calculateVol(drink.totalVolume)}}</div>
               <div class="card-item" v-for="ingredient in drink.ingredientList">{{ingredient}}</div>
 
