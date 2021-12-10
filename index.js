@@ -28,6 +28,7 @@ Vue.createApp({
       promilles: [],
       time: new Date(),
       promillePage: 1,
+      timeout: 0
     };
   },
   watch: {
@@ -48,6 +49,16 @@ Vue.createApp({
         /*alert(ex.message)*/
       }
       // alert(this.maxBAC)
+    },
+    nameFilter: async function () {
+
+      clearTimeout(this.timeout);
+            
+      var self = this;
+      this.timeout = setTimeout(() => {
+        this.filter()
+      }, 1000);
+      
     }
   },
   methods: {
@@ -122,7 +133,7 @@ Vue.createApp({
       if (pct == -1.0) {
         return "NA";
       } else {
-        return Math.round(pct * 100) + " %";
+        return Math.round(pct * 100) + "%";
       }
     },
     calculateVol(vol) {
@@ -222,9 +233,9 @@ Vue.createApp({
       } catch (ex) {
         /*alert(ex.message)*/
       }
-
+      if(this.drinks.length < 1) {
       this.filterMessage = "Ingen drinks med disse filtre"
-
+      }
       console.log(url)
       console.log("nameFilter: " + this.nameFilter)
     },

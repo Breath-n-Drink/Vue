@@ -14,7 +14,7 @@ a {
 
 
 .alcohol {
-  margin-top: 12vh
+
 }
 
 #promilleListId {
@@ -87,13 +87,17 @@ body {
   color:#212529;
   --color-secondary: white;
   --color-primary: #212529;
+  --color-bg: rgb(31, 31, 31);
+  --color-simple: hsl(0, 0%, 58%);
 }
 
 .dark-mode {
   background-color: #212529;
   color: white;
-  --color-secondary: #212529;
+  --color-secondary: hsl(216, 9%, 10%);
   --color-primary: white;
+  --color-bg: rgb(225, 248, 255);
+  --color-simple: hsl(0, 0%, 65%);
 
 }
 
@@ -138,10 +142,82 @@ h5 {
   margin: auto;
 }
 
+.actions {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(24, 24, 24);
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: solid rgb(85, 85, 85) 2px;
+
+}
+
+.actionsItem {
+  margin: 5px 10px;
+  color: var(--color-simple);
+  font-size: 1.3rem;
+}
+
+.actionsItem:hover {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.sort {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(24, 24, 24);
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: solid rgb(85, 85, 85) 2px;
+
+}
+
+.sortItem {
+  margin: 5px 10px;
+  color: var(--color-simple)
+}
+
+.sortItem button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--color-simple);
+  padding: 0px;
+}
+
+.sortItem button:hover {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.sortItem:hover {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+#nameFilterField {
+  background-color: transparent;
+    border: none;
+    border-bottom: solid var(--color-simple) 1px;
+    color: var(--color-simple);
+    width: 130px;
+}
+
 .drink:hover {
     background-color:bisque;
     transition:all 200ms ease-in-out;
     cursor: pointer;
+}
+
+
+.card:hover {
+  background-color:bisque !important;
+  transition:all 200ms ease-in-out;
+  cursor: pointer;
 }
 
 
@@ -335,6 +411,44 @@ background-color: #bbbbbb;
   margin: auto;
 }
 
+.card-item {
+  border: 2px solid rgb(33, 197, 137);
+  border-radius: 10px;
+  background-color: rgb(14, 211, 138);
+  width: fit-content;
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+
+  padding: 1px 2px;
+  font-weight: 800;
+  margin: 1px;
+}
+
+.red {
+  border-color: red;
+  background-color: red;
+}
+
+.gold {
+  border-color: rgb(212, 198, 0);
+  background-color: rgb(221, 199, 0);
+}
+
+.card-body {
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 0.2rem;
+    align-content: flex-start;
+    background-color: var(--color-secondary);
+}
+
+.card-title {
+  background-color: var(--color-secondary);
+  margin-bottom: 0px;
+}
+
 .page {
   float: right;
 }
@@ -344,16 +458,35 @@ background-color: #bbbbbb;
   text-align: center;
 }
 
- @media screen and (max-width: 1350px) {
+.alcoholHero {
+  width:100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 20%));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1350px) {
   .centered {
     width: 80vw !important;
+    padding: 0 40px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .centered {
     width: 100vw !important;
-  } 
+    padding: 0 10px;
+  }
+
+  .burger-nav {
+    display: block !important;
+  }
+
+  .simple-nav {
+    display:none !important;
+  }
 
   .header-text {
     font-size: 1.3rem;
@@ -391,4 +524,81 @@ background-color: #bbbbbb;
       text-align: left;
     }
   }  */
+}
+
+.burger-nav {
+  display: none;
+  width: 35px;
+  height: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.burger-nav span{
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: var(--color-primary);
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+/* Icon 3 */
+
+.burger-nav span:nth-child(1) {
+  top: 0px;
+  
+}
+
+.burger-nav span:nth-child(2),.burger-nav span:nth-child(3) {
+  top: 10px;
+}
+
+.burger-nav span:nth-child(4) {
+  top: 20px;
+  
+}
+
+.burger-nav.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.burger-nav.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.burger-nav.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.burger-nav.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
 }
