@@ -165,7 +165,7 @@
         </div>
       </div>
       <div id="hiddenComment"><p>{{ funnyComment }}</p> </div>
-      <div class="promilleHistory">
+      <div class="promilleHistory" v-if="userId != 0">
         <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton"  data-bs-toggle="collapse" data-bs-target="#promilleListId">Get drinking history</button>
         <div id="promilleListId"  class="collapse">
         <table id="promilleHistoryTable" class="table table-bordered">
