@@ -42,16 +42,10 @@
                 <li><a href="#alcohol" class="menu-btn">Alcohol</a></li>
                 <li><a id="darkButton" onclick="myFunction()">Light/Dark</a></li>
                 <li><a id="promilleGuideButton" data-bs-toggle="modal" data-bs-target="#pictureModal">Promille Guide</a></li>
-                <!-- <a href="javascript:void(0);" class="icon" onclick="closeFunction()">
+                <li><a href="javascript:void(0);" class="icon" onclick="closeFunction()">
                   <i class="fa fa-bars"></i>
-                </a> -->
+                </a></li>
             </ul>
-            <div class="burger-nav">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </div>
  </div>
@@ -59,7 +53,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Are you 18 years old</h5>
+          <h5 id="ageText" class="modal-title">Are you 18 years old</h5>
         </div>
         <div id="verify" class="collapse">
           <b id="ageAlert">You have to be 18 years old!!!</b>
@@ -171,7 +165,7 @@
         </div>
       </div>
       <div id="hiddenComment"><p>{{ funnyComment }}</p> </div>
-      <div class="promilleHistory">
+      <div class="promilleHistory" v-if="userId != 0">
         <button v-on:click="getPromilleHistory()" class="btn btn-primary" id="getPromilleButton"  data-bs-toggle="collapse" data-bs-target="#promilleListId">Get drinking history</button>
         <div id="promilleListId"  class="collapse">
         <table id="promilleHistoryTable" class="table table-bordered">
@@ -311,7 +305,6 @@
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 id="DrinkName" class="modal-title">{{ modalDrink.name}}</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
 
           <!-- Modal body -->
@@ -370,7 +363,6 @@
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 id="ModalPromilleName" class="modal-title">Promille Guide</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
 
           <!-- Modal body -->
@@ -401,7 +393,7 @@
       range[1].value = "Maximum: 100%"
     }
   </script>
-  <!-- <script>
+  <script>
     function closeFunction() {
       var x = document.getElementById("navbar");
       if (x.className === "header-menu") {
@@ -409,7 +401,7 @@
       } else {
         x.className = "header-menu";
       }
-    } -->
+    }
     </script>
   <script src="index.js"></script>
   <script src="Jquery.js"></script>

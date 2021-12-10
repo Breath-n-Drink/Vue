@@ -1,90 +1,93 @@
 #app {
-    text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 a {
   text-decoration: none;
-  }
+}
 
 .home {
   margin-top: 25vh;
 }
 
+#SubmitButton {
+  margin-top: 5px;
+  margin-right: 5px ;
+}
 
+#AddButton {
+  margin-top: 5px;
+}
 
 .alcohol {
-
 }
 
 #promilleListId {
   margin-bottom: 50px;
 }
 
-  .navbar {
-    
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-    padding: 30px 0;
-    transition: all 0.3s ease;
-    top: 0px;
-    left: opx;
-  }
-  
-  .navbar .centered {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 60vw;
-  }
-  
-  .sticky {
-    background-color: rgb(14, 211, 138);
-    padding: 15px 0;
-  }
-  
-  .centered {
-  
-    padding: 0 80px;
-    max-width: 1300px;
-    margin:auto;
-  }
-  
-  .header-text {
-    font-size: 35px;
-    font-weight: 600;
-    color: var(--color-primary);
-  }
-  
-  #demo {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-  }
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding: 30px 0;
+  transition: all 0.3s ease;
+  top: 0px;
+  left: opx;
+}
+
+.navbar .centered {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vw;
+}
+
+.sticky {
+  background-color: rgb(14, 211, 138);
+  padding: 15px 0;
+}
+
+.centered {
+  padding: 0 80px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.header-text {
+  font-size: 35px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+#demo {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
 
 .simple-nav {
   margin-top: 15px;
 }
 
-  .simple-nav li {
-    list-style: none;
-    display: inline-block;
+.simple-nav li {
+  list-style: none;
+  display: inline-block;
+}
 
-  }
-  
-  .simple-nav li a {
-    display: block;
-    color: var(--color-primary);
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 25px;
-    transition: color 0.3s ease;
-  }
-  
-   
+.simple-nav li a {
+  display: block;
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  transition: color 0.3s ease;
+}
+
 body {
   background-color: white;
-  color:#212529;
+  color: #212529;
   --color-secondary: white;
   --color-primary: #212529;
   --color-bg: rgb(31, 31, 31);
@@ -116,7 +119,7 @@ body {
 }
 
 #hiddenStuff {
-    display: none;
+  display: none;
 }
 
 #hiddenComment {
@@ -208,9 +211,9 @@ h5 {
 }
 
 .drink:hover {
-    background-color:bisque;
-    transition:all 200ms ease-in-out;
-    cursor: pointer;
+  background-color: bisque;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
 }
 
 
@@ -232,10 +235,10 @@ h1 {text-align:center;}
 
 .gauge {
   background: #e7e7e7;
-  box-shadow: 0 -3px 6px 2px rgba(0, 0, 0, 0.50);
+  box-shadow: 0 -3px 6px 2px rgba(0, 0, 0, 0.5);
   width: 200px;
   height: 100px;
-  border-radius: 100px 100px 0 0!important;
+  border-radius: 100px 100px 0 0 !important;
   position: relative;
   overflow: hidden;
 }
@@ -244,97 +247,141 @@ h1 {text-align:center;}
 }
 
 .gauge-center {
-  content: '';
+  content: "";
   color: #fff;
   width: 60%;
   height: 60%;
-  background: #15222E;
-  border-radius: 100px 100px 0 0!important;
+  background: #15222e;
+  border-radius: 100px 100px 0 0 !important;
   position: absolute;
   box-shadow: 0 -13px 15px -10px rgba(0, 0, 0, 0.28);
   right: 21%;
   bottom: 0;
   color: #fff;
-  z-index:10;
+  z-index: 10;
 }
 
-.gauge-center .label, .gauge-center .number {display:block; width: 100%; text-align: center; border:0!important;}
-.gauge-center .label {font-size:0.75em; opacity:0.6; margin:1.1em 0 0.3em 0;}
-.gauge-center .number {font-size:1.2em;}
+.gauge-center .label,
+.gauge-center .number {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border: 0 !important;
+}
+.gauge-center .label {
+  font-size: 0.75em;
+  opacity: 0.6;
+  margin: 1.1em 0 0.3em 0;
+}
+.gauge-center .number {
+  font-size: 1.2em;
+}
 
 .needle {
   width: 80px;
   height: 7px;
-  background: #15222E;
-  border-bottom-left-radius: 100%!important;
-  border-bottom-right-radius: 5px!important;
-  border-top-left-radius: 100%!important;
-  border-top-right-radius: 5px!important;
+  background: #15222e;
+  border-bottom-left-radius: 100% !important;
+  border-bottom-right-radius: 5px !important;
+  border-top-left-radius: 100% !important;
+  border-top-right-radius: 5px !important;
   position: absolute;
   bottom: -2px;
   left: 20px;
   transform-origin: 100% 4px;
   transform: rotate(0deg);
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.38);
-  display:none;
-  z-index:9;
+  display: none;
+  z-index: 9;
 }
 
-.four.rischio1 .needle {animation: fourspeed1 2s 1 both; animation-delay: 1s; display:block;}
-.four.rischio2 .needle {animation: fourspeed2 2s 1 both; animation-delay: 1s; display:block;}
-.four.rischio3 .needle {animation: fourspeed3 2s 1 both; animation-delay: 1s; display:block;}
-.four.rischio4 .needle {animation: fourspeed4 2s 1 both; animation-delay: 1s; display:block;}
+.four.rischio1 .needle {
+  animation: fourspeed1 2s 1 both;
+  animation-delay: 1s;
+  display: block;
+}
+.four.rischio2 .needle {
+  animation: fourspeed2 2s 1 both;
+  animation-delay: 1s;
+  display: block;
+}
+.four.rischio3 .needle {
+  animation: fourspeed3 2s 1 both;
+  animation-delay: 1s;
+  display: block;
+}
+.four.rischio4 .needle {
+  animation: fourspeed4 2s 1 both;
+  animation-delay: 1s;
+  display: block;
+}
 
-.slice-colors {height:100%;}
+.slice-colors {
+  height: 100%;
+}
 
 .slice-colors .st {
   position: absolute;
   bottom: 0;
   width: 0;
   height: 0;
-  border: 50px solid transparent;  
+  border: 50px solid transparent;
 }
-
 
 .four .slice-colors .st.slice-item:nth-child(2) {
   border-top: 50px #f1c40f solid;
   border-right: 50px #f1c40f solid;
-  background-color:#1eaa59;
+  background-color: #1eaa59;
 }
 
 .four .slice-colors .st.slice-item:nth-child(4) {
-  left:50%;
-  border-bottom: 50px #E84C3D solid;
-  border-right: 50px #E84C3D solid;
-  background-color:#e67e22;
+  left: 50%;
+  border-bottom: 50px #e84c3d solid;
+  border-right: 50px #e84c3d solid;
+  background-color: #e67e22;
 }
 
-
 @-webkit-keyframes fourspeed1 {
-	0% {transform: rotate(0);}
-  100% {transform: rotate(16deg);}
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(16deg);
+  }
 }
 
 @-webkit-keyframes fourspeed2 {
-	0% {transform: rotate(0);}
-  100% {transform: rotate(65deg);}
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(65deg);
+  }
 }
 
 @-webkit-keyframes fourspeed3 {
-	0% {transform: rotate(0);}
-  100% {transform: rotate(115deg);}
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(115deg);
+  }
 }
 
 @-webkit-keyframes fourspeed4 {
-	0% {transform: rotate(0);}
-  100% {transform: rotate(164deg);}
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(164deg);
+  }
 }
 
 .filter {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 30%));
-    grid-column-gap: 20px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 30%));
+  grid-column-gap: 20px;
+  justify-content: center;
 }
 
 #inputName {
@@ -343,28 +390,27 @@ h1 {text-align:center;}
   margin-bottom: 10px;
 }
 
-.form-check-input{
-    margin-left: 1.9em !important;
+.form-check-input {
+  margin-left: 1.9em !important;
 }
 
 .filterContainer {
-    width:100%;
-    max-width: 700px;
-    margin: auto;
-    border: 5px;
-border-radius: 14px;
-padding: 5px;
-background-color: #bbbbbb;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  border: 5px;
+  border-radius: 14px;
+  padding: 5px;
+  background-color: #bbbbbb;
 }
 
 .alcFilter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* rating */
-*{
-  margin: 0;
+* {
   padding: 0;
 }
 .rate {
@@ -373,27 +419,27 @@ background-color: #bbbbbb;
   padding: 0 10px;
 }
 .rate:not(:checked) > input {
-  position:absolute;
-  top:-9999px;
+  position: absolute;
+  top: -9999px;
 }
 .rate:not(:checked) > label {
-  float:right;
-  width:1em;
-  overflow:hidden;
-  white-space:nowrap;
-  cursor:pointer;
-  font-size:30px;
-  color:#ccc;
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
 }
 .rate:not(:checked) > label:before {
-  content: '★ ';
+  content: "★ ";
 }
 .rate > input:checked ~ label {
-  color: #ffc700;    
+  color: #ffc700;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-  color: #deb217;  
+  color: #deb217;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
@@ -402,9 +448,9 @@ background-color: #bbbbbb;
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
-#ratingText{
+#ratingText {
   margin-bottom: auto;
-} 
+}
 
 #promilleListId {
   max-width: 700px;
@@ -480,10 +526,6 @@ background-color: #bbbbbb;
     padding: 0 10px;
   }
 
-  .burger-nav {
-    display: block !important;
-  }
-
   .simple-nav {
     display:none !important;
   }
@@ -495,110 +537,42 @@ background-color: #bbbbbb;
   #logoId {
     height: 30px;
     width: 30px;
-    margin-right: -12px
+    margin-right: -12px;
   }
-
-   /* .header-menu .icon {
-    display: none;
-    color: violet;
-  }
-
-  @media screen and (max-width: 600px) {
-    .header-menu a:not(:first-child) {display: none;}
-    .header-menu a.icon {
-      float: right;
-      display: block;
-    }
-  } 
-  
-   @media screen and (max-width: 600px) {
-    .header-menu.responsive {position: relative;}
-    .header-menu.responsive .icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .header-menu.responsive a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-  }  */
 }
 
-.burger-nav {
+#verificationBody {
+  margin: auto;
+}
+
+#ageText {
+  margin: auto;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.header-menu .icon {
   display: none;
-  width: 35px;
-  height: 25px;
-  position: relative;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
-  cursor: pointer;
 }
 
-.burger-nav span{
-  border-radius: 4px;
-  display: block;
-  position: absolute;
-  height: 5px;
-  width: 100%;
-  background: var(--color-primary);
-  opacity: 1;
-  left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
+@media screen and (max-width: 600px) {
+  .header-menu li:not(:last-child) {display: none;}
+  .header-menu li a.icon {
+    float: right;
+    display: block;
+  }
 }
 
-/* Icon 3 */
-
-.burger-nav span:nth-child(1) {
-  top: 0px;
-  
-}
-
-.burger-nav span:nth-child(2),.burger-nav span:nth-child(3) {
-  top: 10px;
-}
-
-.burger-nav span:nth-child(4) {
-  top: 20px;
-  
-}
-
-.burger-nav.open span:nth-child(1) {
-  top: 18px;
-  width: 0%;
-  left: 50%;
-}
-
-.burger-nav.open span:nth-child(2) {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.burger-nav.open span:nth-child(3) {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
-.burger-nav.open span:nth-child(4) {
-  top: 18px;
-  width: 0%;
-  left: 50%;
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .header-menu.responsive {position: relative;}
+  .header-menu.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .header-menu.responsive li{
+    float: none;
+    display: block;
+    text-align: right;
+  }
 }
