@@ -83,13 +83,17 @@ body {
   color:#212529;
   --color-secondary: white;
   --color-primary: #212529;
+  --color-bg: rgb(31, 31, 31);
+  --color-simple: hsl(0, 0%, 58%);
 }
 
 .dark-mode {
   background-color: #212529;
   color: white;
-  --color-secondary: #212529;
+  --color-secondary: hsl(216, 9%, 10%);
   --color-primary: white;
+  --color-bg: rgb(225, 248, 255);
+  --color-simple: hsl(0, 0%, 65%);
 
 }
 
@@ -135,6 +139,28 @@ h5 {
   margin: auto;
 }
 
+.sort {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(24, 24, 24);
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: solid rgb(85, 85, 85) 2px;
+
+}
+
+.sortItem {
+  margin: 5px 10px;
+  color: var(--color-simple);
+}
+
+.sortItem:hover {
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
 .drink:hover {
     background-color:bisque;
     transition:all 200ms ease-in-out;
@@ -143,7 +169,7 @@ h5 {
 
 
 .card:hover {
-  background-color:bisque;
+  background-color:bisque !important;
   transition:all 200ms ease-in-out;
   cursor: pointer;
 }
@@ -348,6 +374,7 @@ background-color: #bbbbbb;
   font-size: 0.8rem;
 
   padding: 1px 2px;
+  font-weight: 800;
   margin: 1px;
 }
 
