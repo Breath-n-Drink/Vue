@@ -526,10 +526,6 @@ h1 {text-align:center;}
     padding: 0 10px;
   }
 
-  .simple-nav {
-    display:none !important;
-  }
-
   .header-text {
     font-size: 1.3rem;
   }
