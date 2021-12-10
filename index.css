@@ -196,6 +196,14 @@ h5 {
   cursor: pointer;
 }
 
+#nameFilterField {
+  background-color: transparent;
+    border: none;
+    border-bottom: solid var(--color-simple) 1px;
+    color: var(--color-simple);
+    width: 130px;
+}
+
 .drink:hover {
     background-color:bisque;
     transition:all 200ms ease-in-out;

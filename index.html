@@ -269,7 +269,7 @@
     <section id="alcohol" class="alcohol">
       <div class="centered">
         <div v-if="drinks.length != 0" class="sort">
-          <div class="sortItem"><i class="fas fa-font"></i> Name</div>
+          <div class="sortItem"><i class="fas fa-font"></i> Name <input id="nameFilterField" type="text" class="text" placeholder="Search by name" v-model="nameFilter"></div>
           <div class="sortItem"><i class="fas fa-tint"></i> mL</div>
           <div class="sortItem"><i class="fas fa-wine-bottle"></i> Projected Promille</div>
           <div class="sortItem"><i class="fas fa-star"></i> <button class="btn" id="sortByRatingBtn0" v-if="sortByRating==0" v-on:click="sortByRating = 1; filter()">Rating ⮃</button><button id="sortByRatingBtn1" v-if="sortByRating==1" v-on:click="sortByRating = 2; filter()">Rating ↑</button><button id="sortByRatingBtn2" v-if="sortByRating==2" v-on:click="sortByRating = 1; filter()">Rating ↓</button></div>
